@@ -3,7 +3,7 @@ CREATE DATABASE orderSwift;
 USE orderSwift;
 
 CREATE TABLE users (
-	user_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    user_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR(30) NULL,
 	first_name VARCHAR(30),
     last_name VARCHAR(30),
@@ -14,7 +14,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE orders(
-	order_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    order_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     user_id INTEGER,
     order_date DATETIME NUll,
     order_status VARCHAR(12) NULL,
@@ -23,14 +23,14 @@ CREATE TABLE orders(
 );
 
 CREATE TABLE products(
-	product_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    prodcut_name VARCHAR(50) NULL,
+    product_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(50) NULL,
     product_descrip VARCHAR(250) NULL,
     price DECIMAL(10, 2) NULL
 );
 
 CREATE TABLE ordersDetails(
-	order_deail_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    order_detail_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     order_id INTEGER,
     product_id INTEGER,
     quantity INTEGER NULL,
