@@ -1,79 +1,49 @@
 package com.example.orderswift.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
+@Entity(name = "Transaction")
 @Table(name = "transactions")
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "transaction_id")
-    private int id;
+    @Column(
+            name = "transaction_id",
+            updatable = false
+    )
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(
+            name = "user_id",
+            nullable = false
+    )
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
+    @JoinColumn(
+            name = "order_id",
+            nullable = false
+    )
     private Order order;
 
     @Column(name = "transaction_date")
     private LocalDateTime transactionDate;
 
-    private double amount;
+    private BigDecimal amount;
 
-    @Column(name = "payment_method")
+    @Column(
+            name = "payment_method",
+            nullable = false
+    )
     private String paymentMethod;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public LocalDateTime getTransactionDate() {
-        return transactionDate;
-    }
-
-    public void setTransactionDate(LocalDateTime transactionDate) {
-        this.transactionDate = transactionDate;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
 }
