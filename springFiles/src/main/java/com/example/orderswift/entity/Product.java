@@ -1,19 +1,29 @@
 package com.example.orderswift.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-@Entity
+@Entity(name = "Product")
 @Table(name = "products")
+@Getter @Setter
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
-    private Integer productId;
+    @Column(
+            name = "product_id",
+            updatable = false
+    )
+    private Long productId;
 
-    @Column(name = "product_name")
+    @Column(
+            name = "product_name",
+            nullable = false
+    )
     private String productName;
 
     @Column(name = "product_descrip")
@@ -26,6 +36,4 @@ public class Product {
 
     @ManyToMany(mappedBy = "products")
     private List<Category> categories;
-
-    // Getters y setters
 }

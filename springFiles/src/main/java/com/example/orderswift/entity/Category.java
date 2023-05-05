@@ -1,16 +1,22 @@
 package com.example.orderswift.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Entity
+@Entity(name = "Category")
 @Table(name = "categories")
+@Getter @Setter
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
-    private Integer categoryId;
+    @Column(
+            name = "category_id",
+            updatable = false
+    )
+    private Long categoryId;
 
     @Column(name = "category_name")
     private String categoryName;
@@ -22,28 +28,4 @@ public class Category {
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     private List<Product> products;
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 }

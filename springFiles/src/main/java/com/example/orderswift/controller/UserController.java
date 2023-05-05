@@ -18,7 +18,7 @@ public class UserController {
         return userService.getUsers();
     }
 
-    @PostMapping
+    @PostMapping("/update")
     public void saveUpdate(@RequestBody User user){
          userService.saveOrUpdate(user);
     }

@@ -1,15 +1,21 @@
 package com.example.orderswift.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
+@Entity(name = "ProductCategory")
 @Table(name = "products_categories")
+@Getter @Setter
 public class ProductCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_category_id")
-    private int id;
+    @Column(
+            name = "product_category_id",
+            updatable = false
+    )
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -18,28 +24,4 @@ public class ProductCategory {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }
