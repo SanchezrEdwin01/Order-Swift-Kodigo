@@ -17,7 +17,7 @@ public class UserService {
        return userRepository.findAll();
     }
 
-    public Optional<User> getUser(Long userId){
+    public Optional<User> getUser(int userId){
         return userRepository.findById(userId);
     }
 
@@ -25,7 +25,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void delete(Long userId){
+    public void delete(int userId){
         userRepository.deleteById(userId);
     }
 
