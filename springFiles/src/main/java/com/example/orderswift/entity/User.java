@@ -19,7 +19,7 @@ public class  User {
             name = "user_id",
             updatable = false
     )
-    private Long userId;
+    private int userId;
 
     @Column(name = "user_name")
     private String userName;
