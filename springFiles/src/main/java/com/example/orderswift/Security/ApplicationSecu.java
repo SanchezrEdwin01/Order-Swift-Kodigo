@@ -1,4 +1,4 @@
-package com.example.orderswift.Security;
+/**package com.example.orderswift.Security;
 
 import com.example.orderswift.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,4 +17,4 @@ public class ApplicationSecu {
         return username -> (UserDetails) repository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
-}
+}**/

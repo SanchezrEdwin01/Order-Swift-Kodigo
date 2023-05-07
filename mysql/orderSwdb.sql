@@ -54,7 +54,7 @@ CREATE TABLE products(
     price DECIMAL(10, 2) NULL
 );
 
-CREATE TABLE ordersDetails(
+CREATE TABLE orders_details(
 	order_deail_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     order_id INTEGER,
     product_id INTEGER,

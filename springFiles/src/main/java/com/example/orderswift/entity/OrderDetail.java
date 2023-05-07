@@ -17,7 +17,7 @@ public class OrderDetail {
             name = "order_detail_id",
             updatable = false
     )
-    private Long orderDetailId;
+    private Integer orderDetailId;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
