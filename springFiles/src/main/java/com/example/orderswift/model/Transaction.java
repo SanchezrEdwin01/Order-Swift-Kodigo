@@ -1,4 +1,4 @@
-package com.example.orderswift.entity;
+package com.example.orderswift.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

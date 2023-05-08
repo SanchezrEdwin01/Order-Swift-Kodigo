@@ -1,9 +1,10 @@
 package com.example.orderswift.repository;
 
-import com.example.orderswift.entity.Order;
+import com.example.orderswift.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OrderRepository extends JpaRepository<Order, Long> {
+public interface OrderRepository extends JpaRepository<Order, Integer> {
+
 }
