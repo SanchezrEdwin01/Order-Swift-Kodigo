@@ -55,7 +55,7 @@ CREATE TABLE products(
 );
 
 CREATE TABLE orders_details(
-	order_deail_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+	order_detail_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     order_id INTEGER,
     product_id INTEGER,
     quantity INTEGER NULL,
