@@ -24,4 +24,11 @@ public class Order {
 
     @Column(name = "total_amount")
     private Double totalAmount;
+
+    public Order(int i, String s, String s1, double v, String aNew) {
+    }
+
+    public Integer getOrderId() {
+        return orderId;
+    }
 }

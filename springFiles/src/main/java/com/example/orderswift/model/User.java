@@ -35,4 +35,7 @@ public class  User {
 
     @Column(name = "user_email")
     private String userEmail;
+
+    public User(int i, String john, String doe) {
+    }
 }
