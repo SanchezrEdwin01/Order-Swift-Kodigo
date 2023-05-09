@@ -1,4 +1,4 @@
-package com.example.orderswift.service;
+package com.example.orderswift.service.Product;
 import com.example.orderswift.model.Order;
 import com.example.orderswift.model.Product;
 import com.example.orderswift.repository.ProductRepository;

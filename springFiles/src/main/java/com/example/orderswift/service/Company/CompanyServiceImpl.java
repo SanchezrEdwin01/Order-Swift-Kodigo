@@ -1,9 +1,10 @@
-package com.example.orderswift.service;
+package com.example.orderswift.service.Company;
 
 import com.example.orderswift.model.Company;
-import com.example.orderswift.exception.ResourceNotFoundException;
+import com.example.orderswift.Exception.ResourceNotFoundException;
 import com.example.orderswift.repository.CompanyRepository;
 import lombok.RequiredArgsConstructor;
+import com.example.orderswift.service.Company.CompanyService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

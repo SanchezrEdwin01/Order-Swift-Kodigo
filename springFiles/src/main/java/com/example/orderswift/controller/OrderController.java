@@ -1,10 +1,9 @@
 package com.example.orderswift.controller;
 
 import com.example.orderswift.model.Order;
-import com.example.orderswift.service.OrderService;
+import com.example.orderswift.service.Order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController

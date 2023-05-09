@@ -29,10 +29,4 @@ public class Product {
     private String productDescrip;
 
     private BigDecimal price;
-
-    @OneToMany(mappedBy = "product")
-    private List<OrderDetail> orderDetails;
-
-    @ManyToMany(mappedBy = "products")
-    private List<Category> categories;
 }

@@ -1,6 +1,6 @@
-package com.example.orderswift.service;
+package com.example.orderswift.service.Order;
 
-import com.example.orderswift.Exception.OrderNotFoundException;
+import com.example.orderswift.Exception.Order.OrderNotFoundException;
 import com.example.orderswift.model.Order;
 import com.example.orderswift.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderServiceImpl implements OrderService{
-
+public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
@@ -42,6 +41,6 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public String deleteOrder(Integer id_order) {
         orderRepository.deleteById(id_order);
-        return "The order with ID num " + id_order + " has been deleted sucess";
+        return "The order with the ID num " + id_order + " has been deleted sucess";
     }
 }

@@ -1,8 +1,9 @@
 package com.example.orderswift.controller;
 
 import com.example.orderswift.model.Company;
-import com.example.orderswift.service.CompanyService;
 import lombok.RequiredArgsConstructor;
+import com.example.orderswift.service.Company.CompanyService;
+>>>>>>> 38a1a0a (Changes in the structure and adding the orderDetail CRUD)
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

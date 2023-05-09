@@ -1,4 +1,4 @@
-package com.example.orderswift.exception;
+package com.example.orderswift.Exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
