@@ -3,7 +3,6 @@ package com.example.orderswift.service;
 import com.example.orderswift.Exception.OrderNotFoundException;
 import com.example.orderswift.model.Order;
 import com.example.orderswift.repository.OrderRepository;
-import com.example.orderswift.Exception.OrderNotFoundAdvice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public String saveOrder(Order order){
         orderRepository.save(order);
-        return "New user has been added";
+        return "New order has been added";
     }
 
     @Override
@@ -45,5 +44,4 @@ public class OrderServiceImpl implements OrderService{
         orderRepository.deleteById(id_order);
         return "The order with ID num " + id_order + " has been deleted sucess";
     }
-
 }

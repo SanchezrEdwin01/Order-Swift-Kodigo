@@ -1,29 +1,35 @@
 package com.example.orderswift.controller;
 
 import com.example.orderswift.model.Order;
-import com.example.orderswift.service.OrderServicea;
+import com.example.orderswift.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
     @Autowired
-    private OrderServicea orderService;
+    private OrderService orderService;
 
-    @GetMapping
-    public List<Order> getOrders() {
-        return orderService.getOrders();
-    }
+    /*Create*/
+    @PostMapping("/add")
+    public String add(@RequestBody Order order) {return orderService.saveOrder(order);}
 
-    @PostMapping
-    public ResponseEntity<Void> createOrder(@RequestBody Order order) {
-        orderService.saveOrUpdate(order);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    /*Read*/
+    @GetMapping("/getById/{order_id}")
+    public Order getOrderById(@PathVariable Integer order_id){return orderService.getOrderById(order_id);}
+
+    @GetMapping("/getOrders")
+    public List<Order> getOrders(){return orderService.getOrders();}
+
+    /*Update*/
+    @PutMapping("/update/{order_id}")
+    public Order updateOrder(@RequestBody Order order, @PathVariable Integer order_id){
+        return orderService.updateOrder(order, order_id);
     }
+    /*Delete*/
+    @DeleteMapping("/delete/{order_id}")
+    public String deleteOrder(@PathVariable Integer order_id) {return orderService.deleteOrder(order_id);}
 }
