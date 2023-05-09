@@ -17,7 +17,7 @@ public class Product {
             name = "product_id",
             updatable = false
     )
-    private Long productId;
+    private Integer productId;
 
     @Column(
             name = "product_name",
