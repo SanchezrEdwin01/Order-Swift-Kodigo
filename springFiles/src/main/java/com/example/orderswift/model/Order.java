@@ -3,7 +3,7 @@ package com.example.orderswift.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
-import java.util.List;
+
 
 @Entity(name = "Order") @Table(name = "orders") @Data
 public class Order {

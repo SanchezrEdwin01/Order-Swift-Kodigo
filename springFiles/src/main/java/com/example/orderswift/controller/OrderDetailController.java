@@ -1,12 +1,15 @@
 package com.example.orderswift.controller;
 
 
+import com.example.orderswift.model.Order;
 import com.example.orderswift.model.OrderDetail;
 import com.example.orderswift.service.OrderDetail.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.relational.core.sql.In;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/orderDetail")
@@ -21,6 +24,9 @@ public class OrderDetailController {
     /*Read*/
     @GetMapping("/getById/{order_id}")
     public OrderDetail getOrderDetailByIdOrder(@PathVariable Integer order_id){return orderDetailService.getOrderDetailByIdOrder(order_id);}
+
+    @GetMapping("/getDetails")
+    public List<OrderDetail> getAllOrdersDetail(){return orderDetailService.getAllOrdersDetail();}
 
     /*Update*/
     @PutMapping("/update/{orderDetail_id}")
