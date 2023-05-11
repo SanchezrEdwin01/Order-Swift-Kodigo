@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+### Archivo properties ###
+/springFiles/src/main/resources/application.properties

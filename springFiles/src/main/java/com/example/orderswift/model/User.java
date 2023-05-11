@@ -1,4 +1,4 @@
-package com.example.orderswift.entity;
+package com.example.orderswift.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -15,31 +15,19 @@ import lombok.*;
 public class  User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(
-            name = "user_id",
-            updatable = false
-    )
+    @Column(name = "user_id")
     private int userId;
 
     @Column(name = "user_name")
     private String userName;
 
-    @Column(
-            name = "first_name",
-            nullable = false
-    )
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(
-            name = "last_name",
-            nullable = false
-    )
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(
-            name = "user_password",
-            nullable = false
-    )
+    @Column(name = "user_password")
     private String userPassword;
 
     @Column(name = "phone_num")
@@ -48,9 +36,6 @@ public class  User {
     @Column(name = "user_email")
     private String userEmail;
 
-    @Column(
-            name = "user_rol",
-            nullable = false
-    )
-    private String userRol;
+    public User(int i, String john, String doe) {
+    }
 }

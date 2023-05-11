@@ -1,8 +1,7 @@
-package com.example.orderswift.entity;
+package com.example.orderswift.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
@@ -18,7 +17,7 @@ public class Product {
             name = "product_id",
             updatable = false
     )
-    private Long productId;
+    private Integer productId;
 
     @Column(
             name = "product_name",
@@ -30,10 +29,4 @@ public class Product {
     private String productDescrip;
 
     private BigDecimal price;
-
-    @OneToMany(mappedBy = "product")
-    private List<OrderDetail> orderDetails;
-
-    @ManyToMany(mappedBy = "products")
-    private List<Category> categories;
 }
