@@ -2,7 +2,7 @@ package com.example.orderswift;
 
 import com.example.orderswift.model.User;
 import com.example.orderswift.repository.UserRepository;
-import com.example.orderswift.service.UserService;
+import com.example.orderswift.service.User.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

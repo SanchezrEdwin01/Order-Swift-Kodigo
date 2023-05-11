@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity(name = "Company")
@@ -28,4 +29,7 @@ public class Company {
     private String description;
     @Column(name = "company_subscription_date")
     private LocalDateTime subscriptionDate;
+
+    public Company(int i, String s, String s1, String s2, String s3, LocalDate now) {
+    }
 }
