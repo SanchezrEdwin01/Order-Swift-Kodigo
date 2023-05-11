@@ -1,4 +1,4 @@
-package com.example.orderswift.Exception.Order;
+package com.example.orderswift.exception.orderDetail;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,13 +10,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class OrderNotFoundAdvice {
+public class OrderDetailNotFoundAdvice {
     @ResponseBody
-    @ExceptionHandler(OrderNotFoundException.class)
+    @ExceptionHandler(OrderDetailNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, String> exceptionHandler(OrderNotFoundException exception){
+    public Map<String, String> excetionHandler(OrderDetailNotFoundException exception){
         Map<String, String> errorMap = new HashMap<>();
-        errorMap.put("Error message: ", exception.getMessage());
+        errorMap.put("Error message", exception.getMessage());
         return errorMap;
     }
 }

@@ -1,30 +1,18 @@
 package com.example.orderswift.service.Product;
+
 import com.example.orderswift.model.Order;
 import com.example.orderswift.model.Product;
-import com.example.orderswift.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-@Service
-public class ProductService {
-    @Autowired
-    ProductRepository productRepository;
 
-    public List<Product> getProducts() {
-        return productRepository.findAll();
-    }
+public interface ProductService {
+    String addProduct(Product product);
 
-    public Optional<Product> getProductid(Integer productId) {
-        return productRepository.findById(productId);
-    }
+    public List<Product> getProducts();
 
-    public void saveOrUpdate(Product product) {
-        productRepository.save(product);
-    }
+    Product getProductById(Integer productId);
 
-    public void delete(Integer productId) {
-        productRepository.deleteById(productId);
-    }
+    Product updateProduct(Product newproduct, Integer productId);
+
+    String deleteProduct(Integer productId);
 }

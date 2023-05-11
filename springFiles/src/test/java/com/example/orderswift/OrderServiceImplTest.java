@@ -2,20 +2,20 @@ package com.example.orderswift;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.orderswift.service.OrderServiceImpl;
+import com.example.orderswift.service.Order.OrderServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.example.orderswift.Exception.OrderNotFoundException;
+import com.example.orderswift.exception.order.OrderNotFoundException;
 import com.example.orderswift.model.Order;
 import com.example.orderswift.repository.OrderRepository;
 
@@ -84,11 +84,18 @@ public class OrderServiceImplTest {
         });
     }
 
+
+
     @Test
     public void testDeleteOrder() {
-        orderService.deleteOrder(order1.getOrderId());
-        assertEquals("The order with ID num " + order1.getOrderId() + " has been deleted sucess", orderService.deleteOrder(order1.getOrderId()));
+        Integer orderId = 1;
+
+        String result = orderService.deleteOrder(orderId);
+
+        assertEquals("The order with the ID num " + orderId + " has been deleted sucess", result);
+        verify(orderRepository, times(1)).deleteById(orderId);
     }
+
 
 
 }

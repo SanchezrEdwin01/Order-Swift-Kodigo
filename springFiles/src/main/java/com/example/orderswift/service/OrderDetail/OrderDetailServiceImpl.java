@@ -1,7 +1,7 @@
 package com.example.orderswift.service.OrderDetail;
 
-import com.example.orderswift.Exception.Order.OrderNotFoundException;
-import com.example.orderswift.Exception.OrderDetail.OrderDetailNotFoundException;
+import com.example.orderswift.exception.order.OrderNotFoundException;
+import com.example.orderswift.exception.orderDetail.OrderDetailNotFoundException;
 import com.example.orderswift.model.OrderDetail;
 import com.example.orderswift.repository.OrderDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;

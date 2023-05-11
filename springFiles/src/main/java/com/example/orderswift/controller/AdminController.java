@@ -1,9 +1,8 @@
 package com.example.orderswift.controller;
 
 import com.example.orderswift.model.*;
-import com.example.orderswift.service.Product.ProductService;
+import com.example.orderswift.service.Product.ProductServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,31 +11,31 @@ import java.util.Optional;
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
-    private ProductService productService;
+    private ProductServiceImp productServiceImp;
     /*READ*/
     @GetMapping("/getproducts")
     public List<Product> AllProduct(){
-        return productService.getProducts();
+        return productServiceImp.getProducts();
     }
+
+    /*READ SPECIFY PRODUCT*/
     @GetMapping("/getById/{product_id}")
-    public Optional<Product> getProductById(@PathVariable Integer productId){return productService.getProductid(productId);}
+    public Product getProductById(@PathVariable Integer productId){return productServiceImp.getProductById(productId);}
 
+    /*ADD NEW PRODUCT*/
+    @PostMapping("/add")
+    public String addProduct(@RequestBody Product product) {return productServiceImp.addProduct(product);}
 
-
-    @PostMapping("/update")
-    public void  createProduct(@RequestBody Product product) {productService.saveOrUpdate(product);}
-
-    /*DELETE*/
-    @DeleteMapping("/Delete/{productId}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Integer productId) {
-        Optional<Product> product = productService.getProductid(productId);
-
-        if (product.isPresent()) {
-            productService.delete(productId);
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    /*UPDATE PRODUCT*/
+    @PutMapping("/update/{productId}")
+    public Product updateProdcut(@RequestBody Product product, @PathVariable Integer productId){
+        return productServiceImp.updateProduct(product,productId);
     }
 
-}
+    /*DELETE A PRODUCT*/
+
+    @DeleteMapping("/delete/{productId}")
+    public String deleteProduct(@PathVariable Integer productId) {return productServiceImp.deleteProduct(productId);}
+    }
+
+
