@@ -36,7 +36,6 @@ public class CompanyServiceImpl implements CompanyService {
         existingCompany.setContact(company.getContact() != null ? company.getContact() : existingCompany.getContact());
         existingCompany.setIndustry(company.getIndustry() != null ? company.getIndustry() : existingCompany.getIndustry());
         existingCompany.setDescription(company.getDescription() != null ? company.getDescription() : existingCompany.getDescription());
-        existingCompany.setSubscriptionDate(company.getSubscriptionDate() != null ? company.getSubscriptionDate() : existingCompany.getSubscriptionDate());
         return companyRepository.save(existingCompany);
     }
 

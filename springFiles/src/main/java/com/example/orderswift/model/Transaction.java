@@ -1,10 +1,12 @@
 package com.example.orderswift.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -20,13 +22,14 @@ public class Transaction {
             name = "transaction_id",
             updatable = false
     )
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(
             name = "user_id",
             nullable = false
     )
+    @JsonIgnore
     private User user;
 
     @ManyToOne
@@ -36,7 +39,11 @@ public class Transaction {
     )
     private Order order;
 
-    @Column(name = "transaction_date")
+    @Column(
+            name = "transaction_date",
+            updatable = false
+    )
+    @CreationTimestamp
     private LocalDateTime transactionDate;
 
     private BigDecimal amount;

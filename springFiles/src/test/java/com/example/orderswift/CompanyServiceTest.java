@@ -4,7 +4,7 @@ package com.example.orderswift;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import com.example.orderswift.Exception.ResourceNotFoundException;
+import com.example.orderswift.exception.ResourceNotFoundException;
 import com.example.orderswift.model.Company;
 import com.example.orderswift.repository.CompanyRepository;
 

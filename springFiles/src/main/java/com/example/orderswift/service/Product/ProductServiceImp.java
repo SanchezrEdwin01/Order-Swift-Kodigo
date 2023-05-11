@@ -18,7 +18,7 @@ public class ProductServiceImp implements ProductService{
     @Override
     public String addProduct(Product product) {
         productRepository.save(product);
-        return "New order has been added";
+        return "New product has been added";
     }
 
     @Override
@@ -45,7 +45,7 @@ public class ProductServiceImp implements ProductService{
     @Override
     public String deleteProduct(Integer productId) {
         productRepository.deleteById(productId);
-        return "The Prodcut with ID num " + productId + " has been deleted sucess";
+        return "The product with ID num " + productId + " has been deleted success";
     }
 }
 
