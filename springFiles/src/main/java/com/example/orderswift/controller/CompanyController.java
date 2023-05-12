@@ -2,7 +2,7 @@ package com.example.orderswift.controller;
 
 import com.example.orderswift.model.Company;
 import lombok.RequiredArgsConstructor;
-import com.example.orderswift.service.Company.CompanyService;
+import com.example.orderswift.service.company.CompanyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

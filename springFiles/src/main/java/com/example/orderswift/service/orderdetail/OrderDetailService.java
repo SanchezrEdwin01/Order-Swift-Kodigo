@@ -1,9 +1,6 @@
-package com.example.orderswift.service.OrderDetail;
+package com.example.orderswift.service.orderdetail;
 
-import com.example.orderswift.model.Order;
 import com.example.orderswift.model.OrderDetail;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

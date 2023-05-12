@@ -1,7 +1,7 @@
 package com.example.orderswift.controller;
 
 import com.example.orderswift.model.*;
-import com.example.orderswift.service.Product.ProductServiceImp;
+import com.example.orderswift.service.product.ProductServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

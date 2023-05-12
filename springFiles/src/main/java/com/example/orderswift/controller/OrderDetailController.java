@@ -1,12 +1,9 @@
 package com.example.orderswift.controller;
 
 
-import com.example.orderswift.model.Order;
 import com.example.orderswift.model.OrderDetail;
-import com.example.orderswift.service.OrderDetail.OrderDetailService;
+import com.example.orderswift.service.orderdetail.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.sql.In;
-import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

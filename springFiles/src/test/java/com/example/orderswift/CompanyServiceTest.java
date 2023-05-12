@@ -8,7 +8,7 @@ import com.example.orderswift.exception.ResourceNotFoundException;
 import com.example.orderswift.model.Company;
 import com.example.orderswift.repository.CompanyRepository;
 
-import com.example.orderswift.service.Company.CompanyServiceImpl;
+import com.example.orderswift.service.company.CompanyServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

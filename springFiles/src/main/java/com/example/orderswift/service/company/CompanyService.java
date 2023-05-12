@@ -1,4 +1,4 @@
-package com.example.orderswift.service.Company;
+package com.example.orderswift.service.company;
 
 import com.example.orderswift.model.Company;
 

@@ -1,7 +1,7 @@
-package com.example.orderswift.service.OrderDetail;
+package com.example.orderswift.service.orderdetail;
 
 import com.example.orderswift.exception.order.OrderNotFoundException;
-import com.example.orderswift.exception.orderDetail.OrderDetailNotFoundException;
+import com.example.orderswift.exception.orderdetail.OrderDetailNotFoundException;
 import com.example.orderswift.model.OrderDetail;
 import com.example.orderswift.repository.OrderDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +36,12 @@ public class OrderDetailServiceImpl implements OrderDetailService{
             orderDetail.setOrder(orderDetail.getOrder());
             orderDetail.setProduct(orderDetail.getProduct());
             return orderDetailRepository.save(orderDetail);
-        }).orElseThrow(()->new OrderNotFoundException(id_orderDetail));
+        }).orElseThrow(()->new OrderDetailNotFoundException(id_orderDetail));
     }
 
     @Override
     public String deleteOrderDetail(Integer id_orderDetail) {
         orderDetailRepository.deleteById(id_orderDetail);
-        return "The order detail with the ID num " + id_orderDetail + " has been deleted sucess";
+        return "The order detail with the ID num " + id_orderDetail + " has been deleted success";
     }
 }

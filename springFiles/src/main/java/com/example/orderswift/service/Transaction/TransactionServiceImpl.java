@@ -5,8 +5,8 @@ import com.example.orderswift.model.Order;
 import com.example.orderswift.model.Transaction;
 import com.example.orderswift.model.User;
 import com.example.orderswift.repository.TransactionRepository;
-import com.example.orderswift.service.Order.OrderService;
-import com.example.orderswift.service.User.UserService;
+import com.example.orderswift.service.order.OrderService;
+import com.example.orderswift.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
