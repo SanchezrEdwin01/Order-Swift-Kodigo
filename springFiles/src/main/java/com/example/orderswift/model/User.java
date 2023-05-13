@@ -38,4 +38,23 @@ public class  User {
 
     public User(int i, String john, String doe) {
     }
+
+    public User(int i, String john) {
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 }
