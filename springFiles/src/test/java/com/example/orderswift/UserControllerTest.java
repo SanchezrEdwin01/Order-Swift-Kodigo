@@ -43,7 +43,7 @@ class UserControllerTest {
     @Test
     void testGetAll() throws Exception {
         User user1 = new User(1, "John");
-        User user2 = new User(2, "Jane");
+        User user2 = new User(2, "Juan");
         List<User> users = Arrays.asList(user1, user2);
 
         when(userServic.getUsers()).thenReturn(users);
