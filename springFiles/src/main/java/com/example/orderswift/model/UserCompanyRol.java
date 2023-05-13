@@ -15,11 +15,15 @@ public class UserCompanyRol {
             updatable = false
     )
     private Integer id;
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    public void setRole(UserRole role) {
+        this.role = UserRole.valueOf(role.toString().toUpperCase());
+    }
 }
