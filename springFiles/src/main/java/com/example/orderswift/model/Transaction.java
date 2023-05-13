@@ -53,4 +53,7 @@ public class Transaction {
             nullable = false
     )
     private String paymentMethod;
+
+    public Transaction(int i, String s) {
+    }
 }
