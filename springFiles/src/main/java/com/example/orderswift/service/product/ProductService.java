@@ -1,6 +1,6 @@
 package com.example.orderswift.service.product;
 
-import com.example.orderswift.model.Order;
+
 import com.example.orderswift.model.Product;
 
 import java.util.List;
