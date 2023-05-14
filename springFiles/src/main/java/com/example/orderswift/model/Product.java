@@ -29,4 +29,7 @@ public class Product {
     private String productDescrip;
 
     private BigDecimal price;
+
+    public Product(int i, String s) {
+    }
 }
