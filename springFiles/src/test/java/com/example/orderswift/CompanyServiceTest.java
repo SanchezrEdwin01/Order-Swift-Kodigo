@@ -4,11 +4,11 @@ package com.example.orderswift;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import com.example.orderswift.Exception.ResourceNotFoundException;
+import com.example.orderswift.exception.ResourceNotFoundException;
 import com.example.orderswift.model.Company;
 import com.example.orderswift.repository.CompanyRepository;
 
-import com.example.orderswift.service.Company.CompanyServiceImpl;
+import com.example.orderswift.service.company.CompanyServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,10 +31,10 @@ public class CompanyServiceTest {
     @Test
     public void testCreateCompany() {
         Company company = new Company();
-        company.setName("Empresa");
-        company.setContact("empresa@gmail.com");
-        company.setIndustry("Tech");
-        company.setDescription("Descripción");
+        company.setName("");
+        company.setContact("");
+        company.setIndustry("");
+        company.setDescription("");
         company.setSubscriptionDate(LocalDate.of(2023, 5, 11).atStartOfDay());
 
         when(companyRepository.save(any(Company.class))).thenReturn(company);
@@ -72,5 +72,22 @@ public class CompanyServiceTest {
             assertEquals(companies.get(i).getDescription(), result.get(i).getDescription());
             assertEquals(companies.get(i).getSubscriptionDate(), result.get(i).getSubscriptionDate());
         }
+    }
+
+    @Test
+    public void testGetCompanyById() {
+        Company company = new Company(1, "Microsoft", "microsoft@microsoft.com", "Tecnología", "Descripcion", LocalDate.now());
+
+        when(companyRepository.findById(any(Integer.class))).thenReturn(Optional.of(company));
+
+        Company result = companyService.getCompanyById(1);
+
+        assertNotNull(result);
+        assertEquals(company.getId(), result.getId());
+        assertEquals(company.getName(), result.getName());
+        assertEquals(company.getContact(), result.getContact());
+        assertEquals(company.getIndustry(), result.getIndustry());
+        assertEquals(company.getDescription(), result.getDescription());
+        assertEquals(company.getSubscriptionDate(), result.getSubscriptionDate());
     }
 }

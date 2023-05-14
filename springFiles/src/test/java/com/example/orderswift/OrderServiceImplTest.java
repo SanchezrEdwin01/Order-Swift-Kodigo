@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.orderswift.service.Order.OrderServiceImpl;
+import com.example.orderswift.service.order.OrderServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.example.orderswift.Exception.Order.OrderNotFoundException;
+import com.example.orderswift.exception.order.OrderNotFoundException;
 import com.example.orderswift.model.Order;
 import com.example.orderswift.repository.OrderRepository;
 

@@ -3,6 +3,7 @@ package com.example.orderswift.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,7 +28,11 @@ public class Company {
     private String industry;
     @Column(name = "order_description")
     private String description;
-    @Column(name = "company_subscription_date")
+    @Column(
+            name = "company_subscription_date",
+            updatable = false
+    )
+    @CreationTimestamp
     private LocalDateTime subscriptionDate;
 
     public Company(int i, String s, String s1, String s2, String s3, LocalDate now) {

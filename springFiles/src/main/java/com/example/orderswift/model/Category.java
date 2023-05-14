@@ -1,14 +1,13 @@
 package com.example.orderswift.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity(name = "Category")
 @Table(name = "categories")
-@Getter @Setter
+@Data
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
