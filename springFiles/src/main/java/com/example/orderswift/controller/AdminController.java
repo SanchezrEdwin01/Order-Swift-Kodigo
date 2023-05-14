@@ -1,19 +1,22 @@
 package com.example.orderswift.controller;
 
-import com.example.orderswift.model.*;
-import com.example.orderswift.service.product.ProductServiceImpl;
+import com.example.orderswift.model.Product;
+import com.example.orderswift.security.JwtAuthorizationRequired;
+import com.example.orderswift.service.product.ProductServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
-    private ProductServiceImpl productServiceImpl;
+    private ProductServiceImp productServiceImpl;
     /*READ*/
     @GetMapping("/getproducts")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @JwtAuthorizationRequired("ADMIN")
     public List<Product> AllProduct(){
         return productServiceImpl.getProducts();
     }
@@ -24,6 +27,7 @@ public class AdminController {
 
     /*ADD NEW PRODUCT*/
     @PostMapping("/add")
+
     public String addProduct(@RequestBody Product product) {return productServiceImpl.addProduct(product);}
 
     /*UPDATE PRODUCT*/
