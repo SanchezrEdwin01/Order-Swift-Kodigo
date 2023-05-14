@@ -12,7 +12,13 @@ import java.util.Optional;
 @RequestMapping(path = "api/v1/users")
 public class UserController {
     @Autowired
-    private  UserService userService;
+    private UserService userService;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping
     public List<User> getAll(){
         return userService.getUsers();
@@ -20,7 +26,7 @@ public class UserController {
 
     @PostMapping("/update")
     public void saveUpdate(@RequestBody User user){
-         userService.saveOrUpdate(user);
+        userService.saveOrUpdate(user);
     }
 
     @DeleteMapping("/{userId}")
@@ -32,4 +38,5 @@ public class UserController {
     public Optional<User> getById(@PathVariable("userId") int userId){
         return userService.getUser(userId);
     }
-}
+    }
+

@@ -10,11 +10,12 @@ import java.util.Optional;
 
 @Service
 public class UserService {
+
     @Autowired
     UserRepository userRepository;
 
     public List<User> getUsers(){
-       return userRepository.findAll();
+        return userRepository.findAll();
     }
 
     public Optional<User> getUser(int userId){
@@ -28,5 +29,4 @@ public class UserService {
     public void delete(int userId){
         userRepository.deleteById(userId);
     }
-
 }
