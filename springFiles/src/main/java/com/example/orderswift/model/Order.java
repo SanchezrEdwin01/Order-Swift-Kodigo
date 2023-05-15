@@ -1,13 +1,15 @@
 package com.example.orderswift.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
-@Entity(name = "Order") @Table(name = "orders") @Data @NoArgsConstructor
+@Entity(name = "Order") @Table(name = "orders") @Data @AllArgsConstructor
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +30,13 @@ public class Order {
     private Double totalAmount;
 
     public Order(int i, String s, String s1, double v, String aNew) {
+    }
+
+    public Order() {
+
+    }
+
+    public Order(int i, Date date, String string, double v) {
     }
 
     public Integer getOrderId() {

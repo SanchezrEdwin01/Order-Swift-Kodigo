@@ -1,0 +1,60 @@
+JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:274:p, comp refreshButton:::p::p}, seq l {space :p:30:p, comp label1:::p:181:p}, seq l {space :p:59:p, par t {comp panel:::p:500:p, seq {par t:::p {seq {comp createButton:::p:150:p, space :::x, comp updateButton:::p:150:p}, comp searchField:::p:335:p}, space s:::p, par l {comp searchButton:::p:150:p, comp deleteButton:::p:150:p}}}}}, space ::86:x}}"
+			"$verticalGroup": "par l {seq l {space :p:28:p, comp label1:::p::p, space ::30:x, comp panel:::p:307:p, space s:::p, par b {comp searchField::b:p::p, comp searchButton::b:p::p}, space :::p, par b {comp createButton::b:p::p, comp updateButton::b:p::p, comp deleteButton::b:p::p}, space :p:30:p, comp refreshButton:::p::p, space :p:18:p}}"
+		} ) {
+			name: "this"
+			"resizable": false
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Orders Table"
+				"font": new java.awt.Font( "Segoe UI", 0, 16 )
+				auxiliary() {
+					"JavaCodeGenerator.variableLocal": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "refreshButton"
+				"text": "Refresh"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "refresh", true ) )
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "panel"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "ordersTable"
+					"autoResizeMode": 4
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "createButton"
+				"text": "Create Order"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "create", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "deleteButton"
+				"text": "Delete Order"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "delete", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "updateButton"
+				"text": "Update Order"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "searchButton"
+				"text": "Search Order"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "search", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JFormattedTextField" ) {
+				name: "searchField"
+				"text": "Search Order by Id"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 15, 0 )
+			"size": new java.awt.Dimension( 650, 580 )
+		} )
+	}
+}

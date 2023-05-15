@@ -1,0 +1,72 @@
+JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"resizable": false
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {par l {comp welcomeText:::p::p, comp textArea2:::p::p}, space :0:0:x}, seq {space :::p, par l:::p {comp companiesButton::l::150:x, comp orderDetailsButton::l::150:x, comp productsButton::l::150:x}, space ::87:x, par l:::p {comp usersButton::t::150:x, comp ordersButton::t::150:x, comp categoriesButton::t::150:x}, space :::p}}"
+				"$verticalGroup": "par l {seq l {comp welcomeText:::p::p, space s:::p, comp textArea2:::p::p, space s:::p, par b {comp usersButton::b:p::p, comp productsButton::b:p::p}, space s:::p, par b {comp ordersButton::b:p::p, comp orderDetailsButton::b:p::p}, space s:::p, par b {comp categoriesButton::b:p::p, comp companiesButton::b:p::p}, space :0:21:x}}"
+			} ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "welcomeText"
+					"text": "Welcome Admin"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 16, true )
+					"editable": false
+					"focusable": false
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"caretColor": sfield java.awt.SystemColor desktop
+					"requestFocusEnabled": false
+					"verifyInputWhenFocusTarget": false
+					"background": &SwingColor0 new com.jformdesigner.model.SwingColor( "Label.selectedForeground" )
+				} )
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "textArea2"
+					"text": "Select an option:"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 14, true )
+					"editable": false
+					"focusable": false
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"caretColor": sfield java.awt.SystemColor desktop
+					"requestFocusEnabled": false
+					"verifyInputWhenFocusTarget": false
+					"background": #SwingColor0
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "productsButton"
+					"text": "Products"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "companiesButton"
+					"text": "Companies"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "usersButton"
+					"text": "Users"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "orderDetailsButton"
+					"text": "Order Details"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "categoriesButton"
+					"text": "Categories"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "ordersButton"
+					"text": "Orders"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "orders", true ) )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 425, 280 )
+		} )
+	}
+}

@@ -29,8 +29,8 @@ public class UserServiceTest {
     @Test
     public void getUsers_ReturnsListOfUsers() {
         List<User> expectedUsers = new ArrayList<>();
-        expectedUsers.add(new User(4, "Santiago", "Velez"));
-        expectedUsers.add(new User(2, "Alex", "Tarazona"));
+        expectedUsers.add(new User("4", "Santiago", "Velez"));
+        expectedUsers.add(new User("2", "Alex", "Tarazona"));
 
         Mockito.when(userRepository.findAll()).thenReturn(expectedUsers);
 
@@ -43,7 +43,7 @@ public class UserServiceTest {
 
     @Test
     public void getUser_ReturnsUserById() {
-        User expectedUser = new User(2, "Alex", "Tarazona");
+        User expectedUser = new User("2", "Alex", "Tarazona");
 
         Mockito.when(userRepository.findById(2)).thenReturn(Optional.of(expectedUser));
 
@@ -56,7 +56,7 @@ public class UserServiceTest {
 
     @Test
     public void saveOrUpdate_SavesUserToRepository() {
-        User userToSave = new User(1, "Alexander", "Velez");
+        User userToSave = new User("1", "Alexander", "Velez");
 
         userService.saveOrUpdate(userToSave);
 

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity(name = "UserCompanyRol")
 @Table(name = "user_company_roles")
 @Data @NoArgsConstructor
+
 public class UserCompanyRol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +24,14 @@ public class UserCompanyRol {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "user_email")
+    private User email;
+
+
     public void setRole(UserRole role) {
         this.role = UserRole.valueOf(role.toString().toUpperCase());
     }
+
 }

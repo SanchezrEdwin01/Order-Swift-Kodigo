@@ -1,0 +1,39 @@
+JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space :p:40:p, comp userCreate:::p:149:p, space ::91:x, comp companyCreate:::p:149:p, space :p:44:p}, seq t {space ::85:x, comp textArea1:::p::p, space :p:84:p}}"
+			"$verticalGroup": "par l {seq t {space :p:19:p, comp textArea1:::p::p, space ::27:x, par b {comp userCreate::b:p::p, comp companyCreate::b:p::p}, space :::p}}"
+		} ) {
+			name: "this"
+			"resizable": false
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "userCreate"
+				"text": "User profile"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "userCreate", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JTextPane" ) {
+				name: "textArea1"
+				"text": "What kind of profile do you want to create? "
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 16, true )
+				"editable": false
+				"focusable": false
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"caretColor": sfield java.awt.SystemColor desktop
+				"requestFocusEnabled": false
+				"verifyInputWhenFocusTarget": false
+				"background": new com.jformdesigner.model.SwingColor( "Label.selectedForeground" )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "companyCreate"
+				"text": "Company profile"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "companyCreate", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 15, 25 )
+			"size": new java.awt.Dimension( 475, 135 )
+		} )
+	}
+}
