@@ -1,0 +1,107 @@
+JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "signFrame"
+			"defaultCloseOperation": 3
+			"resizable": false
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq {par l {comp scrollPane1:::p:86:p, comp textArea2:::p:86:p}, space :0:0:x}, seq {par l {comp usernameField:::::x, seq t {space :0:0:x, comp passwordField:::p:473:p}, comp textArea3::l:p:86:p}, space :::p}, seq t {space :0:0:x, par t {comp signUpButton:::p:395:p, comp signInButton:::p:395:p}, space :p:41:p}, seq {space :::p, par l {comp textArea4::l:p:156:p, comp showPasswordCheckBox::l:p::p}, space :::x}}"
+					"$verticalGroup": "par l {seq l {comp scrollPane1:::p::p, space s:::p, comp textArea2:::p::p, space u:::p, comp usernameField:::p::p, space s:::p, comp textArea3:::p::p, space :::p, comp passwordField:::p::p, space u:::p, comp showPasswordCheckBox:::p::p, space ::23:x, comp signInButton:::p::p, space s:::p, comp textArea4:::p::p, space :::p, comp signUpButton:::p::p}}"
+				} ) {
+					name: "contentPanel"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						add( new FormComponent( "javax.swing.JTextPane" ) {
+							name: "textArea1"
+							"text": "Sign In"
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 16, true )
+							"editable": false
+							"focusable": false
+							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+							"caretColor": sfield java.awt.SystemColor desktop
+							"requestFocusEnabled": false
+							"verifyInputWhenFocusTarget": false
+							"background": &SwingColor0 new com.jformdesigner.model.SwingColor( "Label.selectedForeground" )
+						} )
+					} )
+					add( new FormComponent( "javax.swing.JTextPane" ) {
+						name: "textArea2"
+						"text": "Username:"
+						"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 14, true )
+						"editable": false
+						"focusable": false
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"caretColor": sfield java.awt.SystemColor desktop
+						"requestFocusEnabled": false
+						"verifyInputWhenFocusTarget": false
+						"background": #SwingColor0
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "usernameField"
+						addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "usernameFieldKeyPressed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JTextPane" ) {
+						name: "textArea3"
+						"text": "Password:"
+						"font": #SwingDerivedFont0
+						"editable": false
+						"focusable": false
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"caretColor": sfield java.awt.SystemColor desktop
+						"requestFocusEnabled": false
+						"verifyInputWhenFocusTarget": false
+						"background": #SwingColor0
+					} )
+					add( new FormComponent( "javax.swing.JPasswordField" ) {
+						name: "passwordField"
+						addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "passwordFieldKeyPressed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "signInButton"
+						"text": "Sign In"
+						"font": new java.awt.Font( "Segoe UI", 0, 11 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "signIn", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JTextPane" ) {
+						name: "textArea4"
+						"text": "Don't have an account yet?"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 12, true )
+						"editable": false
+						"focusable": false
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"caretColor": sfield java.awt.SystemColor desktop
+						"requestFocusEnabled": false
+						"verifyInputWhenFocusTarget": false
+						"background": #SwingColor0
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "signUpButton"
+						"text": "Sign Up"
+						"font": new java.awt.Font( "Segoe UI", 0, 11 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "signUp", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "showPasswordCheckBox"
+						"text": "Show Password"
+						"font": new java.awt.Font( "Segoe UI", 0, 10 )
+						addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "showPasswordCheckBoxStateChanged", true ) )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 90, 0 )
+			"size": new java.awt.Dimension( 505, 385 )
+		} )
+	}
+}

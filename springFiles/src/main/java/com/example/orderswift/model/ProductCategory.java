@@ -1,12 +1,11 @@
 package com.example.orderswift.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity(name = "ProductCategory")
 @Table(name = "products_categories")
-@Getter @Setter
+@Data
 public class ProductCategory {
 
     @Id

@@ -43,43 +43,35 @@ class TransactionServiceImplTest {
 
     @Test
     void getAllTransactions_TransactionsExist_ReturnsListOfTransactions() {
-        // Arrange
         List<Transaction> transactions = new ArrayList<>();
         transactions.add(new Transaction());
         transactions.add(new Transaction());
 
         when(transactionRepository.findAll()).thenReturn(transactions);
 
-        // Act
         List<Transaction> result = transactionService.getAllTransactions();
 
-        // Assert
         assertEquals(transactions, result);
         verify(transactionRepository, times(1)).findAll();
     }
 
     @Test
     void getTransactionById_ValidId_ReturnsMatchingTransaction() {
-        // Arrange
         Integer id = 1;
         Transaction transaction = new Transaction();
         when(transactionRepository.findById(id)).thenReturn(Optional.of(transaction));
 
-        // Act
         Transaction result = transactionService.getTransactionById(id);
 
-        // Assert
         assertEquals(transaction, result);
         verify(transactionRepository, times(1)).findById(id);
     }
 
     @Test
     void getTransactionById_InvalidId_ThrowsResourceNotFoundException() {
-        // Arrange
         Integer id = 1;
         when(transactionRepository.findById(id)).thenReturn(Optional.empty());
 
-        // Act & Assert
         assertThrows(ResourceNotFoundException.class, () -> transactionService.getTransactionById(id));
         verify(transactionRepository, times(1)).findById(id);
     }

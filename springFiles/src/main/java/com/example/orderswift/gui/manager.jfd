@@ -1,0 +1,35 @@
+JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:66:p, comp label1:::p:181:p, space ::291:x}, seq t {space :0:46:x, comp panel:::p::p, space ::40:x}, seq l {space :p:229:p, comp showButton:::p::p, space ::231:x}}"
+			"$verticalGroup": "par l {seq l {space :p:27:p, comp label1:::p::p, space s:::p, comp panel::::295:x, space :::p, comp showButton:::p::p, space :p:17:p}}"
+		} ) {
+			name: "welcomeFrame"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Welcome"
+				auxiliary() {
+					"JavaCodeGenerator.variableLocal": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "showButton"
+				"text": "Show"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "show", true ) )
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "panel"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "elements"
+					"autoResizeMode": 4
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 15, 0 )
+			"size": new java.awt.Dimension( 540, 440 )
+		} )
+	}
+}

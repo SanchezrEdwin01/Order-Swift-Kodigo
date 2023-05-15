@@ -12,6 +12,10 @@ import java.util.List;
 public class ProductServiceImp implements ProductService{
     @Autowired
     ProductRepository productRepository;
+
+    public ProductServiceImp(ProductRepository productRepository) {
+    }
+
     @Override
     public String addProduct(Product product) {
         productRepository.save(product);
