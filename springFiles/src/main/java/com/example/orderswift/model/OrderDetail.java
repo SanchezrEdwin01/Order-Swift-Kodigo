@@ -1,6 +1,7 @@
 package com.example.orderswift.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
 @Entity(name = "OrderDetail")
@@ -13,9 +14,11 @@ public class OrderDetail {
     private Integer orderDetailId;
 
     @Column(name = "quantity")
+    @Positive(message = "Quantity must be greater than zero")
     private Integer quantity;
 
     @Column(name = "unit_price")
+    @Positive(message = "Unit price must be greater than zero")
     private Double unitPrice;
 
     @ManyToOne

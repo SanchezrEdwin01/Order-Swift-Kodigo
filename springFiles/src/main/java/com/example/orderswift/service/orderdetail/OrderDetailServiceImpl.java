@@ -1,7 +1,6 @@
 package com.example.orderswift.service.orderdetail;
 
-import com.example.orderswift.exception.order.OrderNotFoundException;
-import com.example.orderswift.exception.orderdetail.OrderDetailNotFoundException;
+import com.example.orderswift.exception.ResourceNotFoundException;
 import com.example.orderswift.model.OrderDetail;
 import com.example.orderswift.repository.OrderDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,8 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 
     @Override
     public OrderDetail getOrderDetailByIdOrder(Integer id_order) {
-        return orderDetailRepository.findById(id_order).orElseThrow(()-> new OrderDetailNotFoundException(id_order));
+        return orderDetailRepository.findById(id_order)
+                .orElseThrow(()-> new ResourceNotFoundException("Order detail not found for the id " + id_order));
     }
 
     @Override
@@ -36,7 +36,7 @@ public class OrderDetailServiceImpl implements OrderDetailService{
             orderDetail.setOrder(orderDetail.getOrder());
             orderDetail.setProduct(orderDetail.getProduct());
             return orderDetailRepository.save(orderDetail);
-        }).orElseThrow(()->new OrderDetailNotFoundException(id_orderDetail));
+        }).orElseThrow(()->new ResourceNotFoundException("Order detail not found for the id " + id_orderDetail));
     }
 
     @Override

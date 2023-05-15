@@ -4,6 +4,7 @@ import com.example.orderswift.model.Category;
 import com.example.orderswift.service.category.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class CategoryController {
     /*Create*/
     @Operation(summary = "It creates a new category")
     @PostMapping("/add")
-    public String add(@RequestBody Category category) {return categoryService.saveCategory(category);}
+    public String add(@Valid @RequestBody Category category) {return categoryService.saveCategory(category);}
 
     /*Read*/
     @Operation(summary = "It gets a category by its id")
@@ -34,7 +35,7 @@ public class CategoryController {
     /*Update*/
     @Operation(summary = "It updates a category by its id")
     @PutMapping("/update/{category_id}")
-    public Category updateCategory(@RequestBody Category category, @PathVariable Integer category_id){
+    public Category updateCategory(@Valid @RequestBody Category category, @PathVariable Integer category_id){
         return categoryService.updateCategory(category, category_id);
     }
 

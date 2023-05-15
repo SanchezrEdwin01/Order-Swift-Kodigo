@@ -1,6 +1,6 @@
 package com.example.orderswift.service.product;
 
-import com.example.orderswift.exception.product.ExceptionProduct;
+import com.example.orderswift.exception.ResourceNotFoundException;
 import com.example.orderswift.model.Product;
 import com.example.orderswift.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class ProductServiceImp implements ProductService{
     @Override
     public String addProduct(Product product) {
         productRepository.save(product);
-        return "New order has been added";
+        return "New product has been added";
     }
 
     @Override
@@ -29,7 +29,8 @@ public class ProductServiceImp implements ProductService{
 
     @Override
     public Product getProductById(Integer productId) {
-        return productRepository.findById(productId).orElseThrow(()-> new ExceptionProduct(productId));
+        return productRepository.findById(productId)
+                .orElseThrow(()-> new ResourceNotFoundException("Product not found for the id " + productId));
     }
 
     @Override
@@ -40,12 +41,12 @@ public class ProductServiceImp implements ProductService{
             product.setPrice(newproduct.getPrice());
 
             return productRepository.save(product);
-        }).orElseThrow(()->new ExceptionProduct(productId));
+        }).orElseThrow(()->new ResourceNotFoundException("Product not found for the id " + productId));
     }
 
     @Override
     public String deleteProduct(Integer productId) {
         productRepository.deleteById(productId);
-        return "The Prodcut with ID num " + productId + " has been deleted sucess";
+        return "The product with ID num " + productId + " has been deleted";
     }
 }

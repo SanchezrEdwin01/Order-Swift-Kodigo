@@ -1,6 +1,7 @@
 package com.example.orderswift.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class Category {
     private Integer categoryId;
 
     @Column(name = "category_name")
+    @NotBlank(message = "Category name must not be null or blank")
     private String categoryName;
 
     @OneToMany(mappedBy = "category")

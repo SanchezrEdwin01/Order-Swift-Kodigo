@@ -1,6 +1,8 @@
 package com.example.orderswift.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,9 +26,11 @@ public class Order {
     private LocalDateTime orderDate;
 
     @Column(name = "order_status")
+    @NotBlank(message = "Order status must not be null or blank")
     private String orderStatus;
 
     @Column(name = "total_amount")
+    @Positive(message = "Total amount must be greater than zero")
     private Double totalAmount;
 
     public Order(int i, String s, String s1, double v, String aNew) {

@@ -3,6 +3,7 @@ package com.example.orderswift.controller;
 import com.example.orderswift.model.Company;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import com.example.orderswift.service.company.CompanyService;
 import org.springframework.http.HttpStatus;
@@ -32,13 +33,13 @@ public class CompanyController {
 
     @Operation(summary = "It adds a new company")
     @PostMapping("add")
-    public ResponseEntity<Company> addCompany(@RequestBody Company company){
+    public ResponseEntity<Company> addCompany(@Valid @RequestBody Company company){
         return new ResponseEntity<>(companyService.createCompany(company), HttpStatus.CREATED);
     }
 
     @Operation(summary = "It updates a company")
     @PutMapping("{companyId}")
-    public ResponseEntity<Company> editCompany(@PathVariable Integer companyId,@RequestBody Company company){
+    public ResponseEntity<Company> editCompany(@Valid @PathVariable Integer companyId,@RequestBody Company company){
         return new ResponseEntity<>(companyService.updateCompany(companyId, company), HttpStatus.OK);
     }
 

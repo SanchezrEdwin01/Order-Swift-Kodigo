@@ -1,6 +1,8 @@
 package com.example.orderswift.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,11 +25,13 @@ public class Product {
             name = "product_name",
             nullable = false
     )
+    @NotBlank(message = "Product name must not be null or blank")
     private String productName;
 
     @Column(name = "product_descrip")
     private String productDescrip;
 
+    @Positive(message = "Price must be greater than zero")
     private BigDecimal price;
 
     public Product(int i, String s) {

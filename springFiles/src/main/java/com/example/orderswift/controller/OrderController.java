@@ -4,6 +4,7 @@ import com.example.orderswift.model.Order;
 import com.example.orderswift.service.order.OrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -18,7 +19,7 @@ public class OrderController {
     /*Create*/
     @Operation(summary = "It creates a new order")
     @PostMapping("/add")
-    public String add(@RequestBody Order order) {return orderService.saveOrder(order);}
+    public String add(@Valid @RequestBody Order order) {return orderService.saveOrder(order);}
 
     /*Read*/
     @Operation(summary = "It gets an order by its id")
@@ -32,7 +33,7 @@ public class OrderController {
     /*Update*/
     @Operation(summary = "It updates an order by its id")
     @PutMapping("/update/{order_id}")
-    public Order updateOrder(@RequestBody Order order, @PathVariable Integer order_id){
+    public Order updateOrder(@Valid @RequestBody Order order, @PathVariable Integer order_id){
         return orderService.updateOrder(order, order_id);
     }
     /*Delete*/

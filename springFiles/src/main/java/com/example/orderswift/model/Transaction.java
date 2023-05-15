@@ -2,6 +2,8 @@ package com.example.orderswift.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,12 +49,14 @@ public class Transaction {
     @CreationTimestamp
     private LocalDateTime transactionDate;
 
+    @Positive(message = "Amount must be greater than zero")
     private BigDecimal amount;
 
     @Column(
             name = "payment_method",
             nullable = false
     )
+    @NotBlank(message = "Payment method must not be null or blank")
     private String paymentMethod;
 
     public Transaction(int i, String s) {

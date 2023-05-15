@@ -4,6 +4,7 @@ import com.example.orderswift.model.Transaction;
 import com.example.orderswift.service.Transaction.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,14 +33,14 @@ public class TransactionController {
 
     @Operation(description = "This operator adds a new transaction")
     @PostMapping("add")
-    public ResponseEntity<Transaction> addTransaction(@RequestBody Transaction transaction){
+    public ResponseEntity<Transaction> addTransaction(@Valid @RequestBody Transaction transaction){
         return new ResponseEntity<>(transactionService.createTransaction(transaction), HttpStatus.CREATED);
     }
 
     @Operation(description = "This operator updates a transaction by its id")
     @PutMapping("{transId}")
     public ResponseEntity<Transaction> editTransaction(@PathVariable Integer transId,
-                                                       @RequestBody Transaction transaction){
+                                                       @Valid @RequestBody Transaction transaction){
         return new ResponseEntity<>(transactionService.updateTransaction(transId, transaction), HttpStatus.OK);
     }
 

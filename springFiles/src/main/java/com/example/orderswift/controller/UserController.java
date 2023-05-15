@@ -4,6 +4,7 @@ import com.example.orderswift.model.User;
 import com.example.orderswift.service.user.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class UserController {
 
     @Operation(description = "This controller updates a user by its id")
     @PostMapping("/update")
-    public void saveUpdate(@RequestBody User user){
+    public void saveUpdate(@Valid @RequestBody User user){
          userService.saveOrUpdate(user);
     }
 

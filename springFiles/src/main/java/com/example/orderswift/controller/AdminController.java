@@ -5,6 +5,7 @@ import com.example.orderswift.security.JwtAuthorizationRequired;
 import com.example.orderswift.service.product.ProductServiceImp;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -33,12 +34,12 @@ public class AdminController {
     /*ADD NEW PRODUCT*/
     @Operation(summary = "It creates a new product")
     @PostMapping("/add")
-    public String addProduct(@RequestBody Product product) {return productServiceImpl.addProduct(product);}
+    public String addProduct(@Valid @RequestBody Product product) {return productServiceImpl.addProduct(product);}
 
     @Operation(summary = "It updates a new product by its id")
     /*UPDATE PRODUCT*/
     @PutMapping("/update/{productId}")
-    public Product updateProduct(@RequestBody Product product, @PathVariable Integer productId){
+    public Product updateProduct(@Valid @RequestBody Product product, @PathVariable Integer productId){
         return productServiceImpl.updateProduct(product,productId);
     }
 

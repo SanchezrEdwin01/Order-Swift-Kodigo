@@ -5,6 +5,7 @@ import com.example.orderswift.model.OrderDetail;
 import com.example.orderswift.service.orderdetail.OrderDetailService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class OrderDetailController {
     /*Create*/
     @Operation(summary = "It creates a new order detail")
     @PostMapping("/add")
-    public String add(@RequestBody OrderDetail orderDetail) {return orderDetailService.saveOrderDetail(orderDetail);}
+    public String add(@Valid @RequestBody OrderDetail orderDetail) {return orderDetailService.saveOrderDetail(orderDetail);}
 
     /*Read*/
     @Operation(summary = "It gets an order by id order")
@@ -34,7 +35,7 @@ public class OrderDetailController {
     /*Update*/
     @Operation(summary = "It updates an order detail by order id")
     @PutMapping("/update/{order_id}")
-    public OrderDetail updateOrderDetail(@RequestBody OrderDetail orderDetail, @PathVariable Integer orderDetail_id){
+    public OrderDetail updateOrderDetail(@Valid @RequestBody OrderDetail orderDetail, @PathVariable Integer orderDetail_id){
         return orderDetailService.updateOrderDetail(orderDetail, orderDetail_id);
     }
 

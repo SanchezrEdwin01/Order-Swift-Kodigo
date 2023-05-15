@@ -1,6 +1,6 @@
 package com.example.orderswift.service.order;
 
-import com.example.orderswift.exception.order.OrderNotFoundException;
+import com.example.orderswift.exception.ResourceNotFoundException;
 import com.example.orderswift.model.Order;
 import com.example.orderswift.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order getOrderById(Integer id_order) {
-        return orderRepository.findById(id_order).orElseThrow(()-> new OrderNotFoundException(id_order));
+        return orderRepository.findById(id_order)
+                .orElseThrow(()-> new ResourceNotFoundException("Order not found for the id " + id_order));
     }
 
     @Override
@@ -35,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
             order.setTotalAmount(newOrder.getTotalAmount());
             order.setOrderStatus(newOrder.getOrderStatus());
             return orderRepository.save(order);
-        }).orElseThrow(()->new  OrderNotFoundException(id_order));
+        }).orElseThrow(()->new ResourceNotFoundException("Order not found for the id " + id_order));
     }
 
     @Override
