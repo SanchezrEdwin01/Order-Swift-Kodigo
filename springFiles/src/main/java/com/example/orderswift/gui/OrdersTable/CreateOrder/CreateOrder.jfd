@@ -1,0 +1,76 @@
+JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"resizable": false
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {comp label1:::p:181:p, space :0:0:x}, seq {space :::p, par l {seq l {comp label2:::p:90:p, space s:::p, comp idField::::254:x}, seq {comp label6:::p:90:p, space ::18:x, comp userIdField:::p:254:p}, seq l {comp label3:::p:90:p, space ::18:x, comp dateField:::p:254:p}, seq l {comp label4:::p:90:p, space ::18:x, comp statusField:::p:254:p}, seq l {comp label5:::p:90:p, space ::18:x, comp totalAmountField:::p:254:p}}, space :::p}, seq l {space :p:141:p, comp createButton:::p:80:p, space ::153:x}}"
+					"$verticalGroup": "par l {seq l {comp label1:::p::p, space s:::p, par b {comp label2::b:p::p, comp idField::b:p::p}, space :p:12:p, par b {comp label3::b:p::p, comp dateField::b:p::p}, space u:::p, par b {comp label4::b:p::p, comp statusField::b:p::p}, space u:::p, par b {comp label5::b:p::p, comp totalAmountField::b:p::p}, space u:::p, par b {comp label6::b:p::p, comp userIdField::b:p::p}, space ::22:x, comp createButton:::p::p}}"
+				} ) {
+					name: "contentPanel"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"text": "Create Order"
+						"font": new java.awt.Font( "Segoe UI", 0, 16 )
+						auxiliary() {
+							"JavaCodeGenerator.variableLocal": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "ID:"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "Date:"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "Status:"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": "Total Amount:"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label6"
+						"text": "User ID:"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "createButton"
+						"text": "Create"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "create", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JFormattedTextField" ) {
+						name: "idField"
+					} )
+					add( new FormComponent( "javax.swing.JFormattedTextField" ) {
+						name: "dateField"
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "statusField"
+					} )
+					add( new FormComponent( "javax.swing.JFormattedTextField" ) {
+						name: "totalAmountField"
+					} )
+					add( new FormComponent( "javax.swing.JFormattedTextField" ) {
+						name: "userIdField"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 345 )
+		} )
+	}
+}

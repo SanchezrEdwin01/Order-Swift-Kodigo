@@ -62,7 +62,6 @@ public class manager extends JFrame{
 
         //======== welcomeFrame ========
         {
-            welcomeFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             Container welcomeFrameContentPane = welcomeFrame.getContentPane();
 
             //---- label1 ----

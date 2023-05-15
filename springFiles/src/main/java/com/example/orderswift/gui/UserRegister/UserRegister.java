@@ -70,7 +70,7 @@ public class UserRegister extends JFrame {
         firstNameField = new JTextField();
         lastNameField = new JTextField();
         textArea5 = new JTextPane();
-        phoneField = new JFormattedTextField();
+        phoneField = new JFormattedTextField(numberFormatter);
         textArea6 = new JTextPane();
         textArea7 = new JTextPane();
         emailField = new JTextField();

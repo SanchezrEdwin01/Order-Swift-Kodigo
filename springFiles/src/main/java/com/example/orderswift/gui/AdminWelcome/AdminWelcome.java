@@ -4,7 +4,12 @@
 
 package com.example.orderswift.gui.AdminWelcome;
 
+import java.awt.event.*;
+
+import com.example.orderswift.gui.OrdersTable.OrdersTable;
 import com.example.orderswift.model.User;
+import com.example.orderswift.service.order.OrderServiceImpl;
+import com.example.orderswift.service.user.UserService;
 
 import java.awt.*;
 import javax.swing.*;
@@ -16,9 +21,25 @@ import javax.swing.border.*;
  */
 public class AdminWelcome extends JFrame {
     private User user;
-    public AdminWelcome(User user) {
+    private OrderServiceImpl orderService;
+    private UserService userService;
+    public AdminWelcome(User user, OrderServiceImpl orderService, UserService userService) {
         this.user = user;
+        this.orderService = orderService;
         initComponents();
+    }
+
+    private void orders(ActionEvent e) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    OrdersTable ordersTable = new OrdersTable(orderService, userService);
+                    ordersTable.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void initComponents() {
@@ -81,6 +102,7 @@ public class AdminWelcome extends JFrame {
 
             //---- ordersButton ----
             ordersButton.setText("Orders");
+            ordersButton.addActionListener(e -> orders(e));
 
             GroupLayout dialogPaneLayout = new GroupLayout(dialogPane);
             dialogPane.setLayout(dialogPaneLayout);
@@ -90,23 +112,19 @@ public class AdminWelcome extends JFrame {
                         .addGroup(dialogPaneLayout.createParallelGroup()
                             .addComponent(welcomeText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addComponent(textArea2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 228, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(dialogPaneLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(dialogPaneLayout.createParallelGroup()
-                            .addGroup(dialogPaneLayout.createSequentialGroup()
-                                .addComponent(productsButton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(companiesButton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(usersButton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(dialogPaneLayout.createSequentialGroup()
-                                .addComponent(orderDetailsButton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(categoriesButton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(ordersButton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(14, Short.MAX_VALUE))
+                        .addGroup(dialogPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                            .addComponent(companiesButton, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(orderDetailsButton, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(productsButton, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                        .addGroup(dialogPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                            .addComponent(usersButton, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(ordersButton, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(categoriesButton, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                        .addContainerGap())
             );
             dialogPaneLayout.setVerticalGroup(
                 dialogPaneLayout.createParallelGroup()
@@ -116,15 +134,17 @@ public class AdminWelcome extends JFrame {
                         .addComponent(textArea2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(dialogPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(productsButton)
-                            .addComponent(companiesButton)
-                            .addComponent(usersButton))
+                            .addComponent(usersButton)
+                            .addComponent(productsButton))
                         .addGap(18, 18, 18)
                         .addGroup(dialogPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(orderDetailsButton)
+                            .addComponent(ordersButton)
+                            .addComponent(orderDetailsButton))
+                        .addGap(18, 18, 18)
+                        .addGroup(dialogPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(categoriesButton)
-                            .addComponent(ordersButton))
-                        .addGap(0, 29, Short.MAX_VALUE))
+                            .addComponent(companiesButton))
+                        .addGap(0, 21, Short.MAX_VALUE))
             );
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);

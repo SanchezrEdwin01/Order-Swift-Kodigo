@@ -12,6 +12,7 @@ import com.example.orderswift.gui.Register.Register;
 import com.example.orderswift.gui.UserWelcome.UserWelcome;
 import com.example.orderswift.model.UserCompanyRol;
 import com.example.orderswift.service.company.CompanyServiceImpl;
+import com.example.orderswift.service.order.OrderServiceImpl;
 import com.example.orderswift.service.user.UserService;
 import com.example.orderswift.service.usercompanyrole.UserCompanyRoleServiceImpl;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,10 +33,12 @@ public class LogIn {
     private UserService userService;
     private CompanyServiceImpl companyService;
     private UserCompanyRoleServiceImpl userCompanyRoleService;
-    public LogIn(UserService userService, CompanyServiceImpl companyService, UserCompanyRoleServiceImpl userCompanyRoleService) {
+    private OrderServiceImpl orderService;
+    public LogIn(UserService userService, CompanyServiceImpl companyService, UserCompanyRoleServiceImpl userCompanyRoleService, OrderServiceImpl orderService) {
         this.userService = userService;
         this.companyService = companyService;
         this.userCompanyRoleService = userCompanyRoleService;
+        this.orderService = orderService;
         initComponents();
     }
 
@@ -62,17 +65,22 @@ public class LogIn {
                     public void run() {
                         try {
                             AdminWelcome adminFrame = null;
-                            for (UserCompanyRol role : userCompanyRoleService.readRoles()) {
-                                if (role.getUser().getUserId() == user.getUserId()) {
-                                    if (role.getRole().equals("ADMIN")) {
-                                        adminFrame = new AdminWelcome(user);
-                                        adminFrame.setVisible(true);
+                            if(user.getUserName().equals("admin")){
+                                adminFrame = new AdminWelcome(user, orderService, userService);
+                                adminFrame.setVisible(true);
+                            }else {
+                                for (UserCompanyRol role : userCompanyRoleService.readRoles()) {
+                                    if (role.getUser().getUserId() == user.getUserId()) {
+                                        if (role.getRole().equals("ADMIN")) {
+                                            adminFrame = new AdminWelcome(user, orderService, userService);
+                                            adminFrame.setVisible(true);
+                                        }
                                     }
                                 }
-                            }
-                            if(adminFrame == null || !adminFrame.isVisible()){
-                                UserWelcome frame = new UserWelcome(user);
-                                frame.setVisible(true);
+                                if(adminFrame == null || !adminFrame.isVisible()){
+                                    UserWelcome frame = new UserWelcome(user);
+                                    frame.setVisible(true);
+                                }
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -90,6 +98,18 @@ public class LogIn {
             passwordField.setEchoChar((char)0);
         else
             passwordField.setEchoChar('*');
+    }
+
+    private void usernameFieldKeyPressed(KeyEvent e) {
+        if (e.getKeyCode()==KeyEvent.VK_ENTER){
+            signInButton.doClick();
+        }
+    }
+
+    private void passwordFieldKeyPressed(KeyEvent e) {
+        if (e.getKeyCode()==KeyEvent.VK_ENTER){
+            signInButton.doClick();
+        }
     }
 
     private void initComponents() {
@@ -151,6 +171,14 @@ public class LogIn {
                     textArea2.setVerifyInputWhenFocusTarget(false);
                     textArea2.setBackground(UIManager.getColor("Label.selectedForeground"));
 
+                    //---- usernameField ----
+                    usernameField.addKeyListener(new KeyAdapter() {
+                        @Override
+                        public void keyPressed(KeyEvent e) {
+                            usernameFieldKeyPressed(e);
+                        }
+                    });
+
                     //---- textArea3 ----
                     textArea3.setText("Password:");
                     textArea3.setFont(textArea3.getFont().deriveFont(14f));
@@ -161,6 +189,14 @@ public class LogIn {
                     textArea3.setRequestFocusEnabled(false);
                     textArea3.setVerifyInputWhenFocusTarget(false);
                     textArea3.setBackground(UIManager.getColor("Label.selectedForeground"));
+
+                    //---- passwordField ----
+                    passwordField.addKeyListener(new KeyAdapter() {
+                        @Override
+                        public void keyPressed(KeyEvent e) {
+                            passwordFieldKeyPressed(e);
+                        }
+                    });
 
                     //---- signInButton ----
                     signInButton.setText("Sign In");

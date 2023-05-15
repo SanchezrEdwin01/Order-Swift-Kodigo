@@ -8,7 +8,6 @@ new FormModel {
 			"$verticalGroup": "par l {seq l {space :p:27:p, comp label1:::p::p, space s:::p, comp panel::::295:x, space :::p, comp showButton:::p::p, space :p:17:p}}"
 		} ) {
 			name: "welcomeFrame"
-			"defaultCloseOperation": 3
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 				"text": "Welcome"

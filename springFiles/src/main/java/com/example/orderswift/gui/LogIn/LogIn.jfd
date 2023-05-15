@@ -45,6 +45,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "usernameField"
+						addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "usernameFieldKeyPressed", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JTextPane" ) {
 						name: "textArea3"
@@ -60,6 +61,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
 						name: "passwordField"
+						addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "passwordFieldKeyPressed", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "signInButton"

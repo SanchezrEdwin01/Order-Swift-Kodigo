@@ -1,13 +1,14 @@
 package com.example.orderswift.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 
-@Entity(name = "Order") @Table(name = "orders") @Data
+@Entity(name = "Order") @Table(name = "orders") @Data @AllArgsConstructor
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

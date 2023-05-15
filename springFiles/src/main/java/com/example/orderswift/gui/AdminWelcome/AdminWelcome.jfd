@@ -7,8 +7,8 @@ new FormModel {
 			name: "this"
 			"resizable": false
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq {par l {comp welcomeText:::p::p, comp textArea2:::p::p}, space :0:228:x}, seq {space :::p, par l {seq l {comp productsButton:::p:96:p, space s:::p, comp companiesButton:::p:96:p, space s:::p, comp usersButton:::p:96:p}, seq l {comp orderDetailsButton:::p:96:p, space s:::p, comp categoriesButton:::p:96:p, space s:::p, comp ordersButton:::p:96:p}}, space ::14:x}}"
-				"$verticalGroup": "par l {seq l {comp welcomeText:::p::p, space s:::p, comp textArea2:::p::p, space s:::p, par b {comp productsButton::b:p::p, comp companiesButton::b:p::p, comp usersButton::b:p::p}, space s:::p, par b {comp orderDetailsButton::b:p::p, comp categoriesButton::b:p::p, comp ordersButton::b:p::p}, space :0:29:x}}"
+				"$horizontalGroup": "par l {seq {par l {comp welcomeText:::p::p, comp textArea2:::p::p}, space :0:0:x}, seq {space :::p, par l:::p {comp companiesButton::l::150:x, comp orderDetailsButton::l::150:x, comp productsButton::l::150:x}, space ::87:x, par l:::p {comp usersButton::t::150:x, comp ordersButton::t::150:x, comp categoriesButton::t::150:x}, space :::p}}"
+				"$verticalGroup": "par l {seq l {comp welcomeText:::p::p, space s:::p, comp textArea2:::p::p, space s:::p, par b {comp usersButton::b:p::p, comp productsButton::b:p::p}, space s:::p, par b {comp ordersButton::b:p::p, comp orderDetailsButton::b:p::p}, space s:::p, par b {comp categoriesButton::b:p::p, comp companiesButton::b:p::p}, space :0:21:x}}"
 			} ) {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
@@ -59,13 +59,14 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "ordersButton"
 					"text": "Orders"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "orders", true ) )
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 370, 240 )
+			"size": new java.awt.Dimension( 425, 280 )
 		} )
 	}
 }
