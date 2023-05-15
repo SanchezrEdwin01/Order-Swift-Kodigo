@@ -1,4 +1,4 @@
-package com.example.orderswift;
+package com.example.orderswift.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

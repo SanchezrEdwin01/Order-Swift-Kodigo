@@ -1,4 +1,4 @@
-package com.example.orderswift;
+package com.example.orderswift.service;
 
 import com.example.orderswift.exception.ResourceNotFoundException;
 import com.example.orderswift.model.Order;

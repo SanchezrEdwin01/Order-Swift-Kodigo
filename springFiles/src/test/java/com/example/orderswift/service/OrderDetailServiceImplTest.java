@@ -1,4 +1,4 @@
-package com.example.orderswift;
+package com.example.orderswift.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
