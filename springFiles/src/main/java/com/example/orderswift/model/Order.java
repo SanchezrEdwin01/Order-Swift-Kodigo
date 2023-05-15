@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 
-@Entity(name = "Order") @Table(name = "orders") @Data @NoArgsConstructor
+@Entity(name = "Order") @Table(name = "orders") @Data
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +28,10 @@ public class Order {
     private Double totalAmount;
 
     public Order(int i, String s, String s1, double v, String aNew) {
+    }
+
+    public Order() {
+
     }
 
     public Integer getOrderId() {

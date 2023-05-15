@@ -1,0 +1,132 @@
+JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :::p, comp dialogPane2:::p::p, space :::x}}"
+			"$verticalGroup": "par l {seq l {comp dialogPane2:::p::p, space :0:4:x}}"
+		} ) {
+			name: "this"
+			"resizable": false
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {space :::p, par l {seq l {par l {comp textArea1::l:p::p, comp textArea3::l:p:86:p, comp textArea2::l:p:86:p}, space :71::x}, seq {par l {comp lastNameField:::::x, comp firstNameField:::::x, comp passwordField:::::x, comp usernameField:::::x, seq t {space :0:0:x, par l {comp textArea6:::p:86:p, comp phoneField:::p:459:p}}, seq {par l {comp textArea4:::p:86:p, comp textArea5:::p:86:p, comp textArea7:::p:86:p, comp emailField:::p:459:p, seq l {space :p:155:p, comp registerButton:::p:142:p}}, space :0:0:x}}, space :::p}}}}"
+				"$verticalGroup": "par l {seq l {space :::p, comp textArea1:::p::p, space s:::p, comp textArea2:::p::p, space :::p, comp usernameField:::p::p, space u:::p, comp textArea3:::p::p, space :::p, comp passwordField:::p::p, space u:::p, comp textArea4:::p::p, space :::p, comp firstNameField:::p::p, space u:::p, comp textArea5:::p::p, space :::p, comp lastNameField:::p::p, space u:::p, comp textArea6:::p::p, space :6:6:p, comp phoneField:::p::p, space u:::p, comp textArea7:::p::p, space :6:6:p, comp emailField:::p::p, space ::24:x, comp registerButton:::p::p}}"
+			} ) {
+				name: "dialogPane2"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				"autoscrolls": true
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "textArea1"
+					"text": "Create an user profile"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 16, true )
+					"editable": false
+					"focusable": false
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"caretColor": sfield java.awt.SystemColor desktop
+					"requestFocusEnabled": false
+					"verifyInputWhenFocusTarget": false
+					"background": &SwingColor0 new com.jformdesigner.model.SwingColor( "Label.selectedForeground" )
+				} )
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "textArea2"
+					"text": "Username:"
+					"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 14, true )
+					"editable": false
+					"focusable": false
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"caretColor": sfield java.awt.SystemColor desktop
+					"requestFocusEnabled": false
+					"verifyInputWhenFocusTarget": false
+					"background": #SwingColor0
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "usernameField"
+				} )
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "textArea3"
+					"text": "Password:"
+					"font": #SwingDerivedFont0
+					"editable": false
+					"focusable": false
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"caretColor": sfield java.awt.SystemColor desktop
+					"requestFocusEnabled": false
+					"verifyInputWhenFocusTarget": false
+					"background": #SwingColor0
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "passwordField"
+				} )
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "textArea4"
+					"text": "First name:"
+					"font": #SwingDerivedFont0
+					"editable": false
+					"focusable": false
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"caretColor": sfield java.awt.SystemColor desktop
+					"requestFocusEnabled": false
+					"verifyInputWhenFocusTarget": false
+					"background": #SwingColor0
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "firstNameField"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "lastNameField"
+				} )
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "textArea5"
+					"text": "Last name:"
+					"font": #SwingDerivedFont0
+					"editable": false
+					"focusable": false
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"caretColor": sfield java.awt.SystemColor desktop
+					"requestFocusEnabled": false
+					"verifyInputWhenFocusTarget": false
+					"background": #SwingColor0
+				} )
+				add( new FormComponent( "javax.swing.JFormattedTextField" ) {
+					name: "phoneField"
+				} )
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "textArea6"
+					"text": "Phone:"
+					"font": #SwingDerivedFont0
+					"editable": false
+					"focusable": false
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"caretColor": sfield java.awt.SystemColor desktop
+					"requestFocusEnabled": false
+					"verifyInputWhenFocusTarget": false
+					"background": #SwingColor0
+				} )
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "textArea7"
+					"text": "Email:"
+					"font": #SwingDerivedFont0
+					"editable": false
+					"focusable": false
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"caretColor": sfield java.awt.SystemColor desktop
+					"requestFocusEnabled": false
+					"verifyInputWhenFocusTarget": false
+					"background": #SwingColor0
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "emailField"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "registerButton"
+					"text": "Register"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "register", true ) )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 125, 0 )
+			"size": new java.awt.Dimension( 500, 555 )
+		} )
+	}
+}
