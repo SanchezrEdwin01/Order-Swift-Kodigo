@@ -5,7 +5,6 @@ import lombok.*;
 
 import java.util.List;
 
-@Data
 @Entity(name = "User")
 @Table(
         name = "users",
@@ -13,7 +12,7 @@ import java.util.List;
                 @UniqueConstraint(name = "user_email_unique", columnNames = "user_email")
         }
 )
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Data
 public class  User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +40,10 @@ public class  User {
     @OneToMany(mappedBy = "user")
     private List<TransactionUser> transactionUsers;
 
-    public User(int i, String john, String doe) {
+    public User( String userName, String firstName, String lastName) {
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public User(int i, String john) {
