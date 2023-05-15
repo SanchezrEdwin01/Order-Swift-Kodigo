@@ -55,5 +55,6 @@ public class Transaction {
     private String paymentMethod;
 
     public Transaction(int i, String s) {
+
     }
 }

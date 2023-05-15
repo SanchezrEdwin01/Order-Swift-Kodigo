@@ -1,7 +1,7 @@
-package com.example.orderswift;
+package com.example.orderswift.controller;
 
 import com.example.orderswift.controller.AdminController;
-import com.example.orderswift.service.product.ProductServiceImpl;
+import com.example.orderswift.service.product.ProductServiceImp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,7 +20,7 @@ public class AdminControllerTest {
     private MockMvc mockMvc;
 
     @Mock
-    private ProductServiceImpl productService;
+    private ProductServiceImp productService;
 
     @InjectMocks
     private AdminController adminController;

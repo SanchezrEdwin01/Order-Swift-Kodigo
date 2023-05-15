@@ -32,4 +32,14 @@ public class Product {
 
     public Product(int i, String s) {
     }
+
+    public Product() {
+
+    }
+
+    public void setName(String productName) {
+    }
+
+    public void setDescription(String productDescription) {
+    }
 }
