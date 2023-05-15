@@ -6,8 +6,8 @@ import com.example.orderswift.service.product.ProductServiceImp;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import java.util.Optional;
 import java.util.List;
 
 @Tag(name = "Products", description = "This controller makes a CRUD of products")
