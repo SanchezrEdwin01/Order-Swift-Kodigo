@@ -2,7 +2,7 @@ package com.example.orderswift;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.example.orderswift.exception.orderdetail.OrderDetailNotFoundException;
+import com.example.orderswift.exception.ResourceNotFoundException;
 import com.example.orderswift.model.OrderDetail;
 import com.example.orderswift.repository.OrderDetailRepository;
 import com.example.orderswift.service.orderdetail.OrderDetailServiceImpl;
@@ -70,7 +70,7 @@ class OrderDetailServiceImplTest {
         Integer orderDetailId = 1;
         when(orderDetailRepository.findById(orderDetailId)).thenReturn(Optional.empty());
 
-        assertThrows(OrderDetailNotFoundException.class, () -> orderDetailService.getOrderDetailByIdOrder(orderDetailId));
+        assertThrows(ResourceNotFoundException.class, () -> orderDetailService.getOrderDetailByIdOrder(orderDetailId));
         verify(orderDetailRepository, times(1)).findById(orderDetailId);
     }
 
@@ -99,7 +99,7 @@ class OrderDetailServiceImplTest {
         OrderDetail newOrderDetail = new OrderDetail();
         when(orderDetailRepository.findById(orderDetailId)).thenReturn(Optional.empty());
 
-        assertThrows(OrderDetailNotFoundException.class, () -> orderDetailService.updateOrderDetail(newOrderDetail, orderDetailId));
+        assertThrows(ResourceNotFoundException.class, () -> orderDetailService.updateOrderDetail(newOrderDetail, orderDetailId));
         verify(orderDetailRepository, times(1)).findById(orderDetailId);
     }
 

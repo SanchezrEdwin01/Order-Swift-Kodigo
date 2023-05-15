@@ -30,7 +30,7 @@ public class UserController {
 
     @Operation(description = "This controller updates a user by its id")
     @PostMapping("/update")
-    public void saveUpdate(@Valid @RequestBody User user){
+    public void saveUpdate(@RequestBody User user){
          userService.saveOrUpdate(user);
     }
 

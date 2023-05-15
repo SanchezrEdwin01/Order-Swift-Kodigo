@@ -2,7 +2,6 @@ package com.example.orderswift.service.product;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.example.orderswift.exception.product.ExceptionProduct;
 import com.example.orderswift.model.Product;
 import com.example.orderswift.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;

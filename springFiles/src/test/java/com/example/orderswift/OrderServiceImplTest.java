@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.orderswift.exception.ResourceNotFoundException;
 import com.example.orderswift.service.order.OrderServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.example.orderswift.exception.order.OrderNotFoundException;
 import com.example.orderswift.model.Order;
 import com.example.orderswift.repository.OrderRepository;
 
@@ -63,7 +63,7 @@ public class OrderServiceImplTest {
         Order result = orderService.getOrderById(order1.getOrderId());
         assertEquals(order1, result);
 
-        assertThrows(OrderNotFoundException.class, () -> {
+        assertThrows(ResourceNotFoundException.class, () -> {
             orderService.getOrderById(999);
         });
     }
@@ -79,7 +79,7 @@ public class OrderServiceImplTest {
         assertEquals(newOrder.getTotalAmount(), result.getTotalAmount());
         assertEquals(newOrder.getOrderStatus(), result.getOrderStatus());
 
-        assertThrows(OrderNotFoundException.class, () -> {
+        assertThrows(ResourceNotFoundException.class, () -> {
             orderService.updateOrder(newOrder, 999);
         });
     }

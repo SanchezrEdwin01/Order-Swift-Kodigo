@@ -126,7 +126,7 @@ public class CompanyControllerTest {
 
 
 
-        @org.junit.jupiter.api.Test
+        @Test
         void testSaveUpdate() throws Exception {
             User user = new User(1, "John");
 
