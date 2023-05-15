@@ -92,7 +92,7 @@ public class OrderServiceImplTest {
 
         String result = orderService.deleteOrder(orderId);
 
-        assertEquals("The order with the ID num " + orderId + " has been deleted sucess", result);
+        assertEquals("The order with the ID num " + orderId + " has been deleted", result);
         verify(orderRepository, times(1)).deleteById(orderId);
     }
 

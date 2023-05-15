@@ -52,6 +52,10 @@ public class  User {
     public User(int i, String text, String text1, String text2, String text3, String text4, String text5) {
     }
 
+    public User() {
+
+    }
+
     public int getUserId() {
         return userId;
     }
