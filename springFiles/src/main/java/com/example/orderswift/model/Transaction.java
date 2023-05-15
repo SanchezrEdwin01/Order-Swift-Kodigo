@@ -10,6 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity(name = "Transaction")
 @Table(name = "transactions")
@@ -57,4 +58,7 @@ public class Transaction {
     public Transaction(int i, String s) {
 
     }
+
+    @OneToMany(mappedBy = "transaction")
+    private List<TransactionUser> transactionUsers;
 }

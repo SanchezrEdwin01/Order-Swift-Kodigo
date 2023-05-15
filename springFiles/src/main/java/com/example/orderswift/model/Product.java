@@ -42,4 +42,7 @@ public class Product {
 
     public void setDescription(String productDescription) {
     }
+
+    @OneToMany(mappedBy = "product")
+    private List<ProductCategory> productCategories;
 }

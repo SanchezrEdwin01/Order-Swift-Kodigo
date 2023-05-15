@@ -41,6 +41,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public String deleteOrder(Integer id_order) {
         orderRepository.deleteById(id_order);
-        return "The order with the ID num " + id_order + " has been deleted sucess";
+        return "The order with the ID num " + id_order + " has been deleted";
     }
 }

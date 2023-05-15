@@ -3,6 +3,8 @@ package com.example.orderswift.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @Entity(name = "User")
 @Table(
@@ -36,10 +38,16 @@ public class  User {
     @Column(name = "user_email")
     private String userEmail;
 
+    @OneToMany(mappedBy = "user")
+    private List<TransactionUser> transactionUsers;
+
     public User(int i, String john, String doe) {
     }
 
     public User(int i, String john) {
+    }
+
+    public User(int i, String text, String text1, String text2, String text3, String text4, String text5) {
     }
 
     public int getUserId() {

@@ -37,7 +37,7 @@ public class CreateOrder extends JFrame {
     }
 
     private void create(ActionEvent e) {
-        Order order = new Order(orderService.getOrders().size()+1, (User)userService.getUser(Integer.parseInt(userIdField.getText())), new Date(dateField.getText()), statusField.getSelectedItem().toString(), Double.parseDouble(totalAmountField.getText()));
+        Order order = new Order(orderService.getOrders().size()+1, new Date(dateField.getText()), statusField.getSelectedItem().toString(), Double.parseDouble(totalAmountField.getText()));
         orderService.saveOrder(order);
     }
 
