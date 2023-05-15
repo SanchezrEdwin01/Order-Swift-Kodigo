@@ -2,15 +2,23 @@
  * Created by JFormDesigner on Sun May 14 17:17:15 ART 2023
  */
 
-package com.example.orderswift.gui;
+package com.example.orderswift.gui.LogIn;
 
 import java.awt.event.*;
+import javax.swing.event.*;
 
+import com.example.orderswift.gui.AdminWelcome.AdminWelcome;
+import com.example.orderswift.gui.Register.Register;
+import com.example.orderswift.gui.UserWelcome.UserWelcome;
+import com.example.orderswift.model.UserCompanyRol;
+import com.example.orderswift.service.company.CompanyServiceImpl;
 import com.example.orderswift.service.user.UserService;
+import com.example.orderswift.service.usercompanyrole.UserCompanyRoleServiceImpl;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
@@ -22,8 +30,12 @@ import javax.swing.border.*;
 @Component
 public class LogIn {
     private UserService userService;
-    public LogIn(UserService userService) {
+    private CompanyServiceImpl companyService;
+    private UserCompanyRoleServiceImpl userCompanyRoleService;
+    public LogIn(UserService userService, CompanyServiceImpl companyService, UserCompanyRoleServiceImpl userCompanyRoleService) {
         this.userService = userService;
+        this.companyService = companyService;
+        this.userCompanyRoleService = userCompanyRoleService;
         initComponents();
     }
 
@@ -31,13 +43,53 @@ public class LogIn {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Register frame = new Register(userService);
+                    Register frame = new Register(userService, companyService, userCompanyRoleService);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
+    }
+
+    private void signIn(ActionEvent e) {
+        AtomicBoolean logged = new AtomicBoolean(false);
+        userService.getUsers().forEach(user -> {
+            if (user.getUserName().equals(usernameField.getText()) && user.getUserPassword().equals(passwordField.getText())) {
+                JOptionPane.showMessageDialog(null, "Login successfully");
+                logged.set(true);
+                EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        try {
+                            AdminWelcome adminFrame = null;
+                            for (UserCompanyRol role : userCompanyRoleService.readRoles()) {
+                                if (role.getUser().getUserId() == user.getUserId()) {
+                                    if (role.getRole().equals("ADMIN")) {
+                                        adminFrame = new AdminWelcome(user);
+                                        adminFrame.setVisible(true);
+                                    }
+                                }
+                            }
+                            if(adminFrame == null || !adminFrame.isVisible()){
+                                UserWelcome frame = new UserWelcome(user);
+                                frame.setVisible(true);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+        if(!logged.get())
+            JOptionPane.showMessageDialog(null, "Doesn't exist a user with that username and password");
+    }
+
+    private void showPasswordCheckBoxStateChanged(ChangeEvent e) {
+        if(showPasswordCheckBox.isSelected())
+            passwordField.setEchoChar((char)0);
+        else
+            passwordField.setEchoChar('*');
     }
 
     private void initComponents() {
@@ -48,12 +100,13 @@ public class LogIn {
         scrollPane1 = new JScrollPane();
         textArea1 = new JTextPane();
         textArea2 = new JTextPane();
-        textField1 = new JTextField();
+        usernameField = new JTextField();
         textArea3 = new JTextPane();
-        textField2 = new JPasswordField();
+        passwordField = new JPasswordField();
         signInButton = new JButton();
         textArea4 = new JTextPane();
         signUpButton = new JButton();
+        showPasswordCheckBox = new JCheckBox();
 
         //======== signFrame ========
         {
@@ -112,6 +165,7 @@ public class LogIn {
                     //---- signInButton ----
                     signInButton.setText("Sign In");
                     signInButton.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+                    signInButton.addActionListener(e -> signIn(e));
 
                     //---- textArea4 ----
                     textArea4.setText("Don't have an account yet?");
@@ -129,6 +183,11 @@ public class LogIn {
                     signUpButton.setFont(new Font("Segoe UI", Font.PLAIN, 11));
                     signUpButton.addActionListener(e -> signUp(e));
 
+                    //---- showPasswordCheckBox ----
+                    showPasswordCheckBox.setText("Show Password");
+                    showPasswordCheckBox.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+                    showPasswordCheckBox.addChangeListener(e -> showPasswordCheckBoxStateChanged(e));
+
                     GroupLayout contentPanelLayout = new GroupLayout(contentPanel);
                     contentPanel.setLayout(contentPanelLayout);
                     contentPanelLayout.setHorizontalGroup(
@@ -140,21 +199,23 @@ public class LogIn {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(contentPanelLayout.createSequentialGroup()
                                 .addGroup(contentPanelLayout.createParallelGroup()
-                                    .addComponent(textField1)
+                                    .addComponent(usernameField)
                                     .addGroup(GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 473, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 473, GroupLayout.PREFERRED_SIZE))
                                     .addComponent(textArea3, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())
                             .addGroup(GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                    .addComponent(signInButton, GroupLayout.PREFERRED_SIZE, 395, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(signUpButton, GroupLayout.PREFERRED_SIZE, 395, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(signUpButton, GroupLayout.PREFERRED_SIZE, 395, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(signInButton, GroupLayout.PREFERRED_SIZE, 395, GroupLayout.PREFERRED_SIZE))
                                 .addGap(41, 41, 41))
                             .addGroup(contentPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(textArea4, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(contentPanelLayout.createParallelGroup()
+                                    .addComponent(textArea4, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(showPasswordCheckBox))
                                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     );
                     contentPanelLayout.setVerticalGroup(
@@ -164,14 +225,16 @@ public class LogIn {
                                 .addGap(18, 18, 18)
                                 .addComponent(textArea2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(usernameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(textArea3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                                .addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(showPasswordCheckBox)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                                 .addComponent(signInButton)
-                                .addGap(24, 24, 24)
+                                .addGap(18, 18, 18)
                                 .addComponent(textArea4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(signUpButton))
@@ -194,11 +257,12 @@ public class LogIn {
     private JScrollPane scrollPane1;
     private JTextPane textArea1;
     private JTextPane textArea2;
-    private JTextField textField1;
+    private JTextField usernameField;
     private JTextPane textArea3;
-    private JPasswordField textField2;
+    private JPasswordField passwordField;
     private JButton signInButton;
     private JTextPane textArea4;
     private JButton signUpButton;
+    private JCheckBox showPasswordCheckBox;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

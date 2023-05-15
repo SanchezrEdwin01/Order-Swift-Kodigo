@@ -1,6 +1,6 @@
 package com.example.orderswift;
 
-import com.example.orderswift.gui.*;
+import com.example.orderswift.gui.LogIn.LogIn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

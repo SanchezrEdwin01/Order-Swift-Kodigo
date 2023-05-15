@@ -11,8 +11,8 @@ new FormModel {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {par l {comp scrollPane1:::p:86:p, comp textArea2:::p:86:p}, space :0:0:x}, seq {par l {comp textField1:::::x, seq t {space :0:0:x, comp textField2:::p:473:p}, comp textArea3::l:p:86:p}, space :::p}, seq t {space :0:0:x, par t {comp signInButton:::p:395:p, comp signUpButton:::p:395:p}, space :p:41:p}, seq l {space :::p, comp textArea4:::p:156:p, space :::x}}"
-					"$verticalGroup": "par l {seq l {comp scrollPane1:::p::p, space s:::p, comp textArea2:::p::p, space u:::p, comp textField1:::p::p, space s:::p, comp textArea3:::p::p, space :::p, comp textField2:::p::p, space ::13:x, comp signInButton:::p::p, space :p:24:p, comp textArea4:::p::p, space :::p, comp signUpButton:::p::p}}"
+					"$horizontalGroup": "par l {seq {par l {comp scrollPane1:::p:86:p, comp textArea2:::p:86:p}, space :0:0:x}, seq {par l {comp usernameField:::::x, seq t {space :0:0:x, comp passwordField:::p:473:p}, comp textArea3::l:p:86:p}, space :::p}, seq t {space :0:0:x, par t {comp signUpButton:::p:395:p, comp signInButton:::p:395:p}, space :p:41:p}, seq {space :::p, par l {comp textArea4::l:p:156:p, comp showPasswordCheckBox::l:p::p}, space :::x}}"
+					"$verticalGroup": "par l {seq l {comp scrollPane1:::p::p, space s:::p, comp textArea2:::p::p, space u:::p, comp usernameField:::p::p, space s:::p, comp textArea3:::p::p, space :::p, comp passwordField:::p::p, space u:::p, comp showPasswordCheckBox:::p::p, space ::23:x, comp signInButton:::p::p, space s:::p, comp textArea4:::p::p, space :::p, comp signUpButton:::p::p}}"
 				} ) {
 					name: "contentPanel"
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
@@ -44,7 +44,7 @@ new FormModel {
 						"background": #SwingColor0
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField1"
+						name: "usernameField"
 					} )
 					add( new FormComponent( "javax.swing.JTextPane" ) {
 						name: "textArea3"
@@ -59,12 +59,13 @@ new FormModel {
 						"background": #SwingColor0
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
-						name: "textField2"
+						name: "passwordField"
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "signInButton"
 						"text": "Sign In"
 						"font": new java.awt.Font( "Segoe UI", 0, 11 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "signIn", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JTextPane" ) {
 						name: "textArea4"
@@ -84,6 +85,12 @@ new FormModel {
 						"font": new java.awt.Font( "Segoe UI", 0, 11 )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "signUp", true ) )
 					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "showPasswordCheckBox"
+						"text": "Show Password"
+						"font": new java.awt.Font( "Segoe UI", 0, 10 )
+						addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "showPasswordCheckBoxStateChanged", true ) )
+					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
 				} )
@@ -92,7 +99,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 90, 0 )
-			"size": new java.awt.Dimension( 505, 350 )
+			"size": new java.awt.Dimension( 505, 385 )
 		} )
 	}
 }

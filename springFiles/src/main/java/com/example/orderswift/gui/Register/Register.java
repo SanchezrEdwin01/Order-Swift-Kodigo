@@ -2,23 +2,31 @@
  * Created by JFormDesigner on Sun May 14 20:54:30 ART 2023
  */
 
-package com.example.orderswift.gui;
+package com.example.orderswift.gui.Register;
 
+import com.example.orderswift.gui.CompanyRegister.CompanyRegister;
+import com.example.orderswift.gui.UserRegister.UserRegister;
+import com.example.orderswift.service.company.CompanyService;
+import com.example.orderswift.service.company.CompanyServiceImpl;
 import com.example.orderswift.service.user.UserService;
+import com.example.orderswift.service.usercompanyrole.UserCompanyRoleService;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
-import javax.swing.border.*;
 
 /**
  * @author Lucas M
  */
 public class Register extends JFrame {
     private UserService userService;
-    public Register(UserService userService) {
+    private CompanyServiceImpl companyService;
+    private UserCompanyRoleService userCompanyRoleService;
+    public Register(UserService userService, CompanyServiceImpl companyService, UserCompanyRoleService userCompanyRolService) {
         this.userService = userService;
+        this.companyService = companyService;
+        this.userCompanyRoleService = userCompanyRolService;
         initComponents();
     }
 
@@ -26,7 +34,7 @@ public class Register extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    UserRegister frame = new UserRegister(userService);
+                    UserRegister frame = new UserRegister(userService, userCompanyRoleService);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -39,7 +47,7 @@ public class Register extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    CompanyRegister frame = new CompanyRegister();
+                    CompanyRegister frame = new CompanyRegister(companyService, userService, userCompanyRoleService);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();

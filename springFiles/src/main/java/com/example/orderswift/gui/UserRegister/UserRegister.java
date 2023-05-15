@@ -2,10 +2,12 @@
  * Created by JFormDesigner on Sun May 14 21:12:44 ART 2023
  */
 
-package com.example.orderswift.gui;
+package com.example.orderswift.gui.UserRegister;
 
 import com.example.orderswift.model.User;
 import com.example.orderswift.service.user.UserService;
+import com.example.orderswift.service.usercompanyrole.UserCompanyRoleService;
+import com.example.orderswift.service.usercompanyrole.UserCompanyRoleServiceImpl;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
@@ -25,15 +27,21 @@ import javax.swing.text.NumberFormatter;
 @Component
 public class UserRegister extends JFrame {
     private UserService userService;
-    public UserRegister(UserService userService) {
+    private User user;
+    private UserCompanyRoleServiceImpl userCompanyRoleService;
+    public UserRegister(UserService userService, UserCompanyRoleService userCompanyRoleService) {
         this.userService = userService;
+        this.user = null;
+
         initComponents();
     }
 
     private void register(ActionEvent e) {
     // Insert a new user into the database
         User user = new User(userService.getUsers().size()+1,usernameField.getText(), firstNameField.getText(), lastNameField.getText(), passwordField.getText(), emailField.getText(), phoneField.getText());
+        this.user = user;
         userService.saveOrUpdate(user);
+        JOptionPane.showMessageDialog(null, "User created successfully");
     }
 
     private void initComponents() {
