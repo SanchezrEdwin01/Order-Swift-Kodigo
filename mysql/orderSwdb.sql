@@ -39,6 +39,7 @@ CREATE TABLE user_company_roles (
     user_id INTEGER NOT NULL,
     company_id INTEGER NOT NULL,
     role VARCHAR(30) NOT NULL,
+    user_email VARCHAR(30)NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
     ON UPDATE CASCADE
     ON DELETE NO ACTION,

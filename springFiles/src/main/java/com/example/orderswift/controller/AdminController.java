@@ -1,10 +1,8 @@
 package com.example.orderswift.controller;
 
 import com.example.orderswift.model.Product;
-import com.example.orderswift.security.JwtAuthorizationRequired;
 import com.example.orderswift.service.product.ProductServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +13,7 @@ public class AdminController {
     private ProductServiceImp productServiceImpl;
     /*READ*/
     @GetMapping("/getproducts")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @JwtAuthorizationRequired("ADMIN")
+
     public List<Product> AllProduct(){
         return productServiceImpl.getProducts();
     }
